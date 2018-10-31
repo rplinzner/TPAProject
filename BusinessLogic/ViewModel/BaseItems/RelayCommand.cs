@@ -3,11 +3,11 @@ using System.Windows.Input;
 
 namespace BusinessLogic.ViewModel
 {
-    public class DelegateCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private readonly Action _action;
 
-        public DelegateCommand(Action action)
+        public RelayCommand(Action action)
         {
             _action = action;
         }

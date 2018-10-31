@@ -4,7 +4,7 @@ using BusinessLogic.Annotations;
 
 namespace BusinessLogic.ViewModel
 {
-    public class Base : INotifyPropertyChanged
+    public class BaseVM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
 

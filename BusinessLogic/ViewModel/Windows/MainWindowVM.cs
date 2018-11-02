@@ -9,7 +9,12 @@ namespace BusinessLogic.ViewModel
 
         public MainWindowVM()
         {
-            
+            ClickOpen = new RelayCommand(Open);
+        }
+
+        private void Open()
+        {
+            //TODO: Implment behavior after open is clicked
         }
     }
 }

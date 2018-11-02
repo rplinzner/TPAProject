@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="560" Width="800">
+        Title="MainWindow" Height="580" Width="800">
     <Border Padding="10">
         <StackPanel>
           <Button Command="{Binding ClickOpen}" Content="Open" Margin="20 0 20 0" BorderThickness="2" />
@@ -13,7 +13,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="TreeView" FontWeight="Bold" FontSize="13" Margin="20 10 20 10"/>
                 <TextBlock Grid.Column="1" Text="{Binding Mode=OneWay,Path=PathVariable,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Center"/>

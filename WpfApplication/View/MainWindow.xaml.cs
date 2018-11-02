@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using BusinessLogic.ViewModel;
+using WpfApplication.WpfHelper;
 
 namespace WpfApplication
 {
@@ -14,7 +15,7 @@ namespace WpfApplication
             DataContext = new MainWindowVM()
             {
                 //TODO: Create Pathfinder for WPF
-                PathFinder = null
+                PathFinder = new WpfPathFinder()
             };
         }
     }

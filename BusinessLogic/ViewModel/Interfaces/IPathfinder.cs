@@ -2,7 +2,7 @@
 {
     public interface IPathFinder
     {
-        void OpenPath();
+        string FindPath();
 
     }
 }

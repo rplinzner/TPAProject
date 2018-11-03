@@ -6,7 +6,7 @@ namespace BusinessLogic.ViewModel.TreeViewItems
     public class TreeViewType : TreeViewItem
     {
         public TypeMetadata TypeData { get; set; }
-        public TreeViewType(TypeMetadata type) : base(GetFullname(type))
+        public TreeViewType(TypeMetadata type) : base(GetFullName(type))
         {
             TypeData = type;
         }
@@ -72,7 +72,7 @@ namespace BusinessLogic.ViewModel.TreeViewItems
             }
         }
 
-        public static string GetFullname(TypeMetadata model)
+        public static string GetFullName(TypeMetadata model)
         {
             if (model.Modifiers == null) return null;
 

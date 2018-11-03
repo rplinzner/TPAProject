@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\AssemblyMetadata.cs" />
     <Compile Include="Model\Enum\AbstractEnum.cs" />
     <Compile Include="Model\Enum\AccessLevel.cs" />
     <Compile Include="Model\Enum\SealedEnum.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Model\Enum\VirtualEnum.cs" />
     <Compile Include="Model\ExtensionMethods.cs" />
     <Compile Include="Model\MethodMetadata.cs" />
+    <Compile Include="Model\NamespaceMetadata.cs" />
     <Compile Include="Model\ParameterMetadata.cs" />
     <Compile Include="Model\PropertyMetadata.cs" />
     <Compile Include="Model\TypeMetadata.cs" />
@@ -57,6 +59,14 @@
     <Compile Include="ViewModel\BaseItems\BaseVM.cs" />
     <Compile Include="ViewModel\BaseItems\RelayCommand.cs" />
     <Compile Include="ViewModel\Interfaces\IPathFinder.cs" />
+    <Compile Include="ViewModel\ReflectionItems\Reflector.cs" />
+    <Compile Include="ViewModel\TreeViewItems\TreeViewAssembly.cs" />
+    <Compile Include="ViewModel\TreeViewItems\TreeViewItem.cs" />
+    <Compile Include="ViewModel\TreeViewItems\TreeViewMethod.cs" />
+    <Compile Include="ViewModel\TreeViewItems\TreeViewNamespace.cs" />
+    <Compile Include="ViewModel\TreeViewItems\TreeViewParameter.cs" />
+    <Compile Include="ViewModel\TreeViewItems\TreeViewProperty.cs" />
+    <Compile Include="ViewModel\TreeViewItems\TreeViewType.cs" />
     <Compile Include="ViewModel\Windows\MainWindowVM.cs" />
   </ItemGroup>
   <ItemGroup />

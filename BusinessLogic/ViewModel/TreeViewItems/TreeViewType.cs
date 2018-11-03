@@ -77,11 +77,11 @@ namespace BusinessLogic.ViewModel.TreeViewItems
             if (model.Modifiers == null) return null;
 
             string fullname = "";
+            fullname += '['+ model.Type.ToString().ToLower()+ ']' + " ";
             fullname += model.Modifiers.Item1.ToString().ToLower() + " ";
             fullname += model.Modifiers.Item2 == SealedEnum.Sealed ? SealedEnum.Sealed.ToString().ToLower() + " " : "";
             fullname += model.Modifiers.Item3 == AbstractEnum.Abstract ? AbstractEnum.Abstract.ToString().ToLower() + " " : "";
             fullname += model.Modifiers.Item4 == StaticEnum.Static ? StaticEnum.Static.ToString().ToLower() + " " : "";
-            fullname += model.Type.ToString().ToLower() + " ";
             fullname += model.Name;
             return fullname;
 

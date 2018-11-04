@@ -3,7 +3,7 @@ using BusinessLogic.Model;
 
 namespace BusinessLogic.ViewModel.TreeViewItems
 {
-    internal class TreeViewParameter : TreeViewItem
+    public class TreeViewParameter : TreeViewItem
     {
         public ParameterMetadata ParameterData { get; set; }
 

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication"
+        xmlns:converter="clr-namespace:WpfApplication.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="580" Width="800">
     <Border Padding="10">
@@ -22,7 +23,11 @@
             <TreeView x:Name="TreeView" RenderTransformOrigin="0.5 0.5" Height="450" ItemsSource="{Binding HierarchicalAreas}">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
-                        <TextBlock Text="{Binding Path=Name}" FontFamily="Comic Sans MS" Margin="0 0 4 0"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontWeight="Bold" Text="{Binding Converter={x:Static converter:TreeViewItemToStringConverter.Instance}}" />
+                            <TextBlock Text="{Binding Path=Name}" FontFamily="Comic Sans MS" Margin="0 0 4 0" Foreground="{Binding Converter={x:Static converter:TreeViewItemToBrushConverter.Instance}}"/>
+
+                        </StackPanel>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
                 <TreeView.ItemContainerStyle>

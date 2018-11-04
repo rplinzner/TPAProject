@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace BusinessLogic.ViewModel.TreeViewItems
 {
-    internal class TreeViewNamespace : TreeViewItem
+    public class TreeViewNamespace : TreeViewItem
     {
         public List<TypeMetadata> Types { get; set; }
 

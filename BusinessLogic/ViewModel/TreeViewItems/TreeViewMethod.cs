@@ -4,7 +4,7 @@ using BusinessLogic.Model;
 
 namespace BusinessLogic.ViewModel.TreeViewItems
 {
-    internal class TreeViewMethod : TreeViewItem
+    public class TreeViewMethod : TreeViewItem
     {
         public MethodMetadata MethodData;
 

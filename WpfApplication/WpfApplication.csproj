@@ -63,6 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\TreeViewItemToBrushConverter.cs" />
+    <Compile Include="Converters\TreeViewItemToStringConverter.cs" />
     <Compile Include="WpfHelper\WpfPathFinder.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

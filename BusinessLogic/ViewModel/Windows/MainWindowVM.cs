@@ -48,6 +48,8 @@ namespace BusinessLogic.ViewModel
                 //TODO: Implement logger
             }
             _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
+            Console.Out.WriteLine("typ");
+            Console.Out.WriteLine(_treeViewAssembly.GetType());
 
             ShowTreeView();
         }

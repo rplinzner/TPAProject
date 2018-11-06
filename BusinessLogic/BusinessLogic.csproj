@@ -41,6 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logger\BaseLogFactory.cs" />
+    <Compile Include="Logger\Enum\LogLevelEnum.cs" />
+    <Compile Include="Logger\Enum\LogOutputLevelEnum.cs" />
+    <Compile Include="Logger\FileLogger.cs" />
+    <Compile Include="Logger\Interface\ILogFactory.cs" />
+    <Compile Include="Logger\Interface\ILogger.cs" />
+    <Compile Include="Logger\MessageStructure.cs" />
     <Compile Include="Model\AssemblyMetadata.cs" />
     <Compile Include="Singleton\DictionarySingleton.cs" />
     <Compile Include="Model\Enum\AbstractEnum.cs" />

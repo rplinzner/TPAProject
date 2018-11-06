@@ -2,6 +2,9 @@
 using System.Collections.ObjectModel;
 using BusinessLogic.ViewModel.ReflectionItems;
 using System.Windows.Input;
+using BusinessLogic.Logger;
+using BusinessLogic.Logger.Enum;
+using BusinessLogic.Logger.Interface;
 using BusinessLogic.ViewModel.TreeViewItems;
 
 namespace BusinessLogic.ViewModel
@@ -12,6 +15,7 @@ namespace BusinessLogic.ViewModel
         private string _pathVariable;
         public ICommand ClickOpen { get; }
         public IPathFinder PathFinder { get; set; }
+        public ILogFactory LogFactory { get; set; }
         private Reflector _reflector;
         public ObservableCollection<TreeViewItem> HierarchicalAreas { get; set; }
         private TreeViewAssembly _treeViewAssembly;
@@ -37,8 +41,14 @@ namespace BusinessLogic.ViewModel
         #endregion
         private void Open()
         {
+            LogFactory.Log(new MessageStructure("Loading Path"));
             PathVariable = PathFinder.FindPath();
-            if (PathVariable == null) return;
+            if (PathVariable == null)
+            {
+                LogFactory.Log(new MessageStructure("Path Loading Failed"), LogLevelEnum.Error);
+                return;
+            }
+                LogFactory.Log(new MessageStructure("Path Loading Succeeded"), LogLevelEnum.Success);
             try
             {
                 _reflector = new Reflector(PathVariable);

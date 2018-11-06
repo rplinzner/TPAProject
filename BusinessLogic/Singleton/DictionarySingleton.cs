@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BusinessLogic.Model
 {
@@ -18,6 +19,7 @@ namespace BusinessLogic.Model
         private DictionarySingleton()
         {
             //TODO: LOG THAT SINGLETON IS CREATED
+            Console.Out.WriteLine("Singleton is created");
         }
 
         public void Add(string name, TypeMetadata type)

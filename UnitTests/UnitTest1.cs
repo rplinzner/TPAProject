@@ -11,8 +11,7 @@ namespace UnitTests
         [TestMethod]
         public void TestMethod1()
         {
-            TreeViewParameter tw = new TreeViewParameter(null);
-            Console.Out.WriteLine(tw.GetType());
+            
         }
     }
 }

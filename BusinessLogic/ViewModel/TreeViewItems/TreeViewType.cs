@@ -15,11 +15,13 @@ namespace BusinessLogic.ViewModel.TreeViewItems
         {
             if (TypeData.BaseType != null)
             {
-                children.Add(new TreeViewType(TypeMetadata.TypeDictionary[TypeData.BaseType.Name]));
+                //children.Add(new TreeViewType(TypeMetadata.TypeDictionary[TypeData.BaseType.Name]));
+                children.Add(new TreeViewType(DictionarySingleton.Instance.Get(TypeData.BaseType.Name)));
             }
             if (TypeData.DeclaringType != null)
             {
-                children.Add(new TreeViewType(TypeMetadata.TypeDictionary[TypeData.DeclaringType.Name]));
+                //children.Add(new TreeViewType(TypeMetadata.TypeDictionary[TypeData.DeclaringType.Name]));
+                children.Add(new TreeViewType(DictionarySingleton.Instance.Get(TypeData.DeclaringType.Name)));
             }
             if (TypeData.Properties != null)
             {
@@ -39,21 +41,24 @@ namespace BusinessLogic.ViewModel.TreeViewItems
             {
                 foreach (TypeMetadata TypeMetadata in TypeData.GenericArguments)
                 {
-                    children.Add(new TreeViewType(TypeMetadata.TypeDictionary[TypeMetadata.Name]));
+                    //children.Add(new TreeViewType(TypeMetadata.TypeDictionary[TypeMetadata.Name]));
+                    children.Add(new TreeViewType(DictionarySingleton.Instance.Get(TypeMetadata.Name)));
                 }
             }
             if (TypeData.ImplementedInterfaces != null)
             {
                 foreach (TypeMetadata TypeMetadata in TypeData.ImplementedInterfaces)
                 {
-                    children.Add(new TreeViewType(TypeMetadata.TypeDictionary[TypeMetadata.Name]));
+                    //children.Add(new TreeViewType(TypeMetadata.TypeDictionary[TypeMetadata.Name]));
+                    children.Add(new TreeViewType(DictionarySingleton.Instance.Get(TypeMetadata.Name)));
                 }
             }
             if (TypeData.NestedTypes != null)
             {
                 foreach (TypeMetadata TypeMetadata in TypeData.NestedTypes)
                 {
-                    children.Add(new TreeViewType(TypeMetadata.TypeDictionary[TypeMetadata.Name]));
+                    //children.Add(new TreeViewType(TypeMetadata.TypeDictionary[TypeMetadata.Name]));
+                    children.Add(new TreeViewType(DictionarySingleton.Instance.Get(TypeMetadata.Name)));
                 }
             }
             if (TypeData.Methods != null)

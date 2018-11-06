@@ -29,38 +29,38 @@ namespace ConsoleApplication
         private static void Menu (string message)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Write(message);
-            Console.WriteLine("e - exit, o - open");
-            string choose = Console.ReadLine();
-            switch (choose)
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Type 'o' or 'O' to open file. Type 'e' or 'E' to exit.");
+            string choise = Console.ReadLine();
+            switch (choise)
             {
-                case "O":
                 case "o":
-                case "Open":
+                case "O":
                     {
                         Console.Clear();
-                        Console.WriteLine("Type absolute Path of file you want to open");
+                        Console.WriteLine("Type the path of file you want to open and press enter.");
                         ViewModel.HierarchicalAreas = new ObservableCollection<TreeViewItem>();
                         ViewModel.ClickOpen.Execute(null);
                         if (ViewModel.PathVariable == null)
-                            Menu("Wrong Path\n");
+                            Menu("Wrong path!\n");
                         else
                         {
                             CmdView = new TreeViewCmd(new ObservableCollection<TreeViewItemCmd>(ViewModel.HierarchicalAreas.Select(n => new TreeViewItemCmd(n, 0))));
-                            TreeView(String.Empty);
+                            TreeView("");
                         }
                         break;
                     }
-                case "E":
                 case "e":
-                case "Exit":
+                case "E":
                     {
                         Environment.Exit(0);
                         break;
                     }
                 default:
                     {
-                        Menu("Wrong Option!\n");
+                        Menu("Wrong option! Choose: 'e' / 'E' / 'o' / 'O'.\n");
                         break;
                     }
             }
@@ -69,31 +69,39 @@ namespace ConsoleApplication
         private static void TreeView(string message)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Write(message);
-            Console.WriteLine("Path:" + ViewModel.PathVariable);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Path: " + ViewModel.PathVariable);
             Print();
-            Console.WriteLine("Type id that you want to expand/shrink");
-            Console.WriteLine("Type 'Go back', 'b', 'B' to go back to Menu");
-            string temp = Console.ReadLine();
-            switch (temp)
+            Console.WriteLine("Type number of item that you want to expand or shrink");
+            Console.WriteLine("Type 'b' or 'B' to go back to the menu. Type 'e' or 'E' to exit.");
+            string input = Console.ReadLine();
+            switch (input)
             {
-                case "Go back":
-                case "B":
                 case "b":
+                case "B":
                     {
-                        Menu(String.Empty);
+                        Menu("");
+                        break;
+                    }
+
+                case "e":
+                case "E":
+                    {
+                        Environment.Exit(0);
                         break;
                     }
                 default:
                     {
-                        int parsedTemp;
-                        if (!Int32.TryParse(temp, out parsedTemp) || parsedTemp < 0 || parsedTemp > CmdView.Data.Count - 1)
+                        int parsedInput;
+                        if (!Int32.TryParse(input, out parsedInput) || parsedInput < 0 || parsedInput > CmdView.Data.Count - 1)
                         {
-                            TreeView("Incorrect format, try again\n");
+                            TreeView("Incorrect format, please try again\n");
                             return;
                         }
-                        Expand(parsedTemp);
-                        TreeView(String.Empty);
+                        Expand(parsedInput);
+                        TreeView("");
                         break;
                     }
             }
@@ -111,28 +119,26 @@ namespace ConsoleApplication
             foreach (TreeViewItemCmd itemConsole in CmdView.Data)
             {
                 string[] value = new string[4];
-                value[0] = "id:" + index;
+                value[0] = "[" + index + "]: ";
                 //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                value[1] = (string)TreeViewItemToStringConverter.Instance.Convert(itemConsole.TreeItem,null,null,null);
-                value[2] = itemConsole.IsExpanded ? "[-] " : "[+] ";
+                value[1] = itemConsole.IsExpanded ? "[-] " : "[+] ";
+                value[2] = (string)TreeViewItemToStringConverter.Instance.Convert(itemConsole.TreeItem,null,null,null);
                 value[3] = itemConsole.TreeItem.Name;
                 //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                 ConsoleColor color = (ConsoleColor)TreeViewItemToConsoleColorConverter.Instance.Convert(itemConsole.TreeItem, null, null, null);
-                PrintWithIndent(value, itemConsole.Id, color);
+                PrintWithTabAndColor(value, itemConsole.Id, color);
                 index++;
             }
         }
 
-        private static void PrintWithIndent(string[] value, int indent, ConsoleColor color)
+        private static void PrintWithTabAndColor(string[] value, int indent, ConsoleColor color)
         {
             Console.Write(new string(' ', indent * 3));
-            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(value[0]);
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write(value[1]);
-            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(value[2]);
-            Console.ResetColor();
             Console.ForegroundColor = color;
             Console.WriteLine(value[3]);
             Console.ForegroundColor = ConsoleColor.White;

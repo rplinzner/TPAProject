@@ -10,11 +10,10 @@ namespace ConsoleApplication.CmdHelper
         {
             string path = Console.ReadLine();
 
-            if (path != null && File.Exists(path) && path.Contains(".dll"))
+            if (path != null && File.Exists(path) && path.EndsWith(".dll"))
             {
                 return path;
             }
-            Console.WriteLine("Wrong path!");
             return null;
         }
     }

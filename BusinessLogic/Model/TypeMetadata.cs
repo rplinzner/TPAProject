@@ -7,10 +7,9 @@ namespace BusinessLogic.Model
 {
     public class TypeMetadata
     {
-        //TODO: Change type dictionary to singleton
-        //public static Dictionary<string, TypeMetadata> TypeDictionary = new Dictionary<string, TypeMetadata>();
+        
 
-        #region Propoerties
+        #region Properties
 
         public string Name { get; set; }
 
@@ -45,11 +44,6 @@ namespace BusinessLogic.Model
         public TypeMetadata(Type type)
         {
             Name = type.Name;
-            /*if (!TypeDictionary.ContainsKey(Name))
-            {
-                TypeDictionary.Add(Name, this);
-            }*/
-
             if (!DictionarySingleton.Instance.ContainsKey(Name))
             {
                 DictionarySingleton.Instance.Add(Name, this);
@@ -86,11 +80,7 @@ namespace BusinessLogic.Model
 
         public static void StoreType(Type type)
         {
-            /*if (!TypeDictionary.ContainsKey(type.Name))
-            {
-                new TypeMetadata(type);
-            }*/
-            if (!DictionarySingleton.Instance.ContainsKey(type.Name))
+           if (!DictionarySingleton.Instance.ContainsKey(type.Name))
             {
                 new TypeMetadata(type);
             }

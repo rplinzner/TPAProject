@@ -18,11 +18,10 @@ namespace WpfApplication
             InitializeComponent();
             DataContext = new MainWindowVM()
             {
-                //TODO: Create Pathfinder for WPF
                 PathFinder = new WpfPathFinder(),
                 LogFactory = new BaseLogFactory(new List<ILogger>
                 {
-                    new FileLogger("log.txt")
+                    new FileLogger("WPFlog.txt")
                 }, LogOutputLevelEnum.Debug)
             };
         }

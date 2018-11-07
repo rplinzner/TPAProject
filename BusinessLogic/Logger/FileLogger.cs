@@ -21,7 +21,7 @@ namespace BusinessLogic.Logger
             using (TextWriter fileStream = new StreamWriter(File.Open(FilePath, FileMode.Append)))
             {
                 string msg =
-                    $"[{DateTime.Now:yyyy-MM-dd hh:mm:ss tt}] " + $"{level}:".PadRight(15) +
+                    $"[{DateTime.Now:yyyy-MM-dd hh:mm:ss tt}] " + $"[{level}]".PadRight(15) +
                     $" [{message.FileName}] in {message.OriginName}() line {message.LineNumber}: {message.Message}";
                 await fileStream.WriteLineAsync(msg);
             }

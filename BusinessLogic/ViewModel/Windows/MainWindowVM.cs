@@ -19,7 +19,6 @@ namespace BusinessLogic.ViewModel
         private Reflector _reflector;
         public ObservableCollection<TreeViewItem> HierarchicalAreas { get; set; }
         private TreeViewAssembly _treeViewAssembly;
-        //TODO: Add assembly tree item
         public string PathVariable
         {
             get => _pathVariable;
@@ -52,15 +51,14 @@ namespace BusinessLogic.ViewModel
             try
             {
                 _reflector = new Reflector(PathVariable);
+                LogFactory.Log(new MessageStructure("Reflection has started"));
             }
             catch (Exception e)
             {
-                //TODO: Implement logger
+                LogFactory.Log(new MessageStructure("Reflection Error: " + e.Message), LogLevelEnum.Error);
             }
             _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
-            Console.Out.WriteLine("typ");
-            Console.Out.WriteLine(_treeViewAssembly.GetType());
-
+            LogFactory.Log(new MessageStructure("Showing tree view"));
             ShowTreeView();
         }
 

@@ -18,8 +18,6 @@ namespace BusinessLogic.Model
         private Dictionary<string, TypeMetadata> _data = new Dictionary<string, TypeMetadata>();
         private DictionarySingleton()
         {
-            //TODO: LOG THAT SINGLETON IS CREATED
-            Console.Out.WriteLine("Singleton is created");
         }
 
         public void Add(string name, TypeMetadata type)

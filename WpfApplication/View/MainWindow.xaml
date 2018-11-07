@@ -16,8 +16,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Path=" FontWeight="Bold" FontSize="13" Margin="20 10 20 10" FontFamily="Comic Sans MS" TextAlignment="Right" />
-                <TextBlock Grid.Column="1" Text="{Binding Mode=OneWay,Path=PathVariable,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" FontFamily="Comic Sans MS"/>
+                <TextBlock Grid.Column="0" Text="Path=" FontWeight="Bold" FontSize="13" Margin="20 10 20 10" FontFamily="Monotype Corsiva" TextAlignment="Right" />
+                <TextBlock Grid.Column="1" Text="{Binding Mode=OneWay,Path=PathVariable,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" FontFamily="Monotype Corsiva"/>
             </Grid>
             <!-- Actual tree view -->
             <TreeView x:Name="TreeView" RenderTransformOrigin="0.5 0.5" Height="450" ItemsSource="{Binding HierarchicalAreas}">
@@ -25,7 +25,7 @@
                     <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontWeight="Bold" Text="{Binding Converter={x:Static converter:TreeViewItemToStringConverter.Instance}}" />
-                            <TextBlock Text="{Binding Path=Name}" FontFamily="Comic Sans MS" Margin="0 0 4 0" Foreground="{Binding Converter={x:Static converter:TreeViewItemToBrushConverter.Instance}}"/>
+                            <TextBlock Text="{Binding Path=Name}" FontFamily="Monotype Corsiva" Margin="0 0 4 0" Foreground="{Binding Converter={x:Static converter:TreeViewItemToBrushConverter.Instance}}"/>
 
                         </StackPanel>
                     </HierarchicalDataTemplate>

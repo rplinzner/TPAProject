@@ -41,10 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractClass1.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Class2.cs" />
+    <Compile Include="Interface1.cs" />
+    <Compile Include="NiceNamespace\ClassWithClass.cs" />
+    <Compile Include="NiceNamespace\ClassWithGenericArgs.cs" />
+    <Compile Include="StaticClass1.cs" />
+    <Compile Include="NiceNamespace\ClassWithStructure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recursion\ClassA.cs" />
     <Compile Include="Recursion\ClassB.cs" />
     <Compile Include="Recursion\ClassC.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +50,8 @@
     <Compile Include="Logger\Interface\ILogFactory.cs" />
     <Compile Include="Logger\Interface\ILogger.cs" />
     <Compile Include="Logger\MessageStructure.cs" />
+    <Compile Include="Serialization\ISerializer.cs" />
+    <Compile Include="Serialization\XMLSerializer.cs" />
     <Compile Include="Model\AssemblyMetadata.cs" />
     <Compile Include="Singleton\DictionarySingleton.cs" />
     <Compile Include="Model\Enum\AbstractEnum.cs" />

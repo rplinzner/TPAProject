@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.IO;
 
-namespace BusinessLogic.Serialization
+namespace Serialization
 {
     public class XMLSerializer : ISerializer
     {

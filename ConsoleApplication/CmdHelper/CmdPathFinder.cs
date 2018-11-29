@@ -16,5 +16,10 @@ namespace ConsoleApplication.CmdHelper
             }
             return null;
         }
+
+        public string SaveToPath()
+        {
+            return null;
+        }
     }
 }

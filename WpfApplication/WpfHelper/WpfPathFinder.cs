@@ -22,5 +22,22 @@ namespace WpfApplication.WpfHelper
 
             return of.FileName;
         }
+
+        public string SaveToPath()
+        {
+            SaveFileDialog sf = new SaveFileDialog
+            {
+                Filter = "XML File(*.xml) | *.xml",
+                RestoreDirectory = true
+            };
+            sf.ShowDialog();
+            if (sf.FileName.Length == 0)
+            {
+                MessageBox.Show("File has not been saved.", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+
+            return sf.FileName;
+        }
     }
 }

@@ -6,14 +6,19 @@ using BusinessLogic.Logger;
 using BusinessLogic.Logger.Enum;
 using BusinessLogic.Logger.Interface;
 using BusinessLogic.ViewModel.TreeViewItems;
+using Serialization;
 
 namespace BusinessLogic.ViewModel
 {
     public class MainWindowVM : BaseVM
     {
         #region Props and fields
+        public ISerializer Serializer = new XMLSerializer();
+        public string PathForSerialization { get; set; }
+
         private string _pathVariable;
         public ICommand ClickOpen { get; }
+        public ICommand ClickSave { get; }
         public IPathFinder PathFinder { get; set; }
         public ILogFactory LogFactory { get; set; }
         private Reflector _reflector;
@@ -35,6 +40,7 @@ namespace BusinessLogic.ViewModel
         {
             HierarchicalAreas = new ObservableCollection<TreeViewItem>();
             ClickOpen = new RelayCommand(Open);
+            ClickSave = new RelayCommand(Save);
 
         }
         #endregion
@@ -60,6 +66,30 @@ namespace BusinessLogic.ViewModel
             _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
             LogFactory.Log(new MessageStructure("Showing tree view"));
             ShowTreeView();
+        }
+
+        private void Save()
+        {
+            LogFactory.Log(new MessageStructure("Serialization has started"));
+            PathForSerialization = PathFinder.SaveToPath();
+            if (PathForSerialization == null)
+            {
+                LogFactory.Log(new MessageStructure("Serialization failed - Path is null"), LogLevelEnum.Error);
+            }
+            else
+            {
+                try
+                {
+                    Serializer.Serialize(PathForSerialization, _reflector.AssemblyModel);
+                    LogFactory.Log(new MessageStructure("Serializization completed"), LogLevelEnum.Success);
+                }
+                catch (Exception e)
+                {
+                    LogFactory.Log(new MessageStructure("Serialization error:" + e.Message), LogLevelEnum.Error);
+                }
+
+
+            }
         }
 
         private void ShowTreeView()

@@ -50,8 +50,6 @@
     <Compile Include="Logger\Interface\ILogFactory.cs" />
     <Compile Include="Logger\Interface\ILogger.cs" />
     <Compile Include="Logger\MessageStructure.cs" />
-    <Compile Include="Serialization\ISerializer.cs" />
-    <Compile Include="Serialization\XMLSerializer.cs" />
     <Compile Include="Model\AssemblyMetadata.cs" />
     <Compile Include="Singleton\DictionarySingleton.cs" />
     <Compile Include="Model\Enum\AbstractEnum.cs" />
@@ -81,6 +79,11 @@
     <Compile Include="ViewModel\TreeViewItems\TreeViewType.cs" />
     <Compile Include="ViewModel\Windows\MainWindowVM.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Serialization\Serialization.csproj">
+      <Project>{cfd56bcd-0d96-485e-ad38-9d260c6035f4}</Project>
+      <Name>Serialization</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

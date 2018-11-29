@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassesForTesting", "Classe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "ConsoleApplication\ConsoleApplication.csproj", "{D4091BE8-68B8-4B05-92DD-A408D7B2E148}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization", "Serialization\Serialization.csproj", "{CFD56BCD-0D96-485E-AD38-9D260C6035F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D4091BE8-68B8-4B05-92DD-A408D7B2E148}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4091BE8-68B8-4B05-92DD-A408D7B2E148}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4091BE8-68B8-4B05-92DD-A408D7B2E148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD56BCD-0D96-485E-AD38-9D260C6035F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD56BCD-0D96-485E-AD38-9D260C6035F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD56BCD-0D96-485E-AD38-9D260C6035F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD56BCD-0D96-485E-AD38-9D260C6035F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

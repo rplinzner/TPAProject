@@ -9,7 +9,14 @@
         Title="MainWindow" Height="580" Width="800">
     <Border Padding="10">
         <StackPanel>
-          <Button Command="{Binding ClickOpen}" Content="Open" Margin="20 0 20 0" BorderThickness="2" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Command="{Binding ClickOpen}" Content="Open" Margin="10 0 10 0" BorderThickness="2" Grid.Column="0" />
+                <Button Command="{Binding ClickSave}" Content="Save" Margin="10 0 10 0" BorderThickness="2" Grid.Column="1" />
+            </Grid>
             <!-- info -->
             <Grid>
                 <Grid.ColumnDefinitions>

@@ -2,10 +2,10 @@
 
 namespace BusinessLogic.Model
 {
-    [DataContract]
+    [DataContract(IsReference = true)]
     public class ParameterMetadata
     {
-        [DataMember(IsReference = true)]
+        [DataMember]
         public string Name { get; set; }
         [DataMember]
         public TypeMetadata Type { get; set; }

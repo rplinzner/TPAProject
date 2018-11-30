@@ -39,7 +39,7 @@ namespace ConsoleApplication
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write(message);
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Type 'o' or 'O' to open file. Type 'e' or 'E' to exit.");
+            Console.WriteLine("Type 'o' or 'O' to open file. Type 's' or 'S' to save. Type 'e' or 'E' to exit.");
             string choise = Console.ReadLine();
             switch (choise)
             {
@@ -56,6 +56,20 @@ namespace ConsoleApplication
                         {
                             CmdView = new TreeViewCmd(new ObservableCollection<TreeViewItemCmd>(ViewModel.HierarchicalAreas.Select(n => new TreeViewItemCmd(n, 0))));
                             TreeView("");
+                        }
+                        break;
+                    }
+                case "s":
+                case "S":
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Type the path where you want to save file and press enter.");
+                        ViewModel.ClickSave.Execute(null);
+                        if (ViewModel.PathForSerialization == null)
+                            Menu("Wrong path!\n");
+                        else
+                        {
+                            Menu("Serialization success!\n");
                         }
                         break;
                     }
@@ -82,7 +96,7 @@ namespace ConsoleApplication
             Console.WriteLine("Path: " + ViewModel.PathVariable);
             Print();
             Console.WriteLine("Type number of item that you want to expand or shrink");
-            Console.WriteLine("Type 'b' or 'B' to go back to the menu. Type 'e' or 'E' to exit.");
+            Console.WriteLine("Type 'b' or 'B' to go back to the menu. Type 's' or 'S' to save. Type 'e' or 'E' to exit.");
             string input = Console.ReadLine();
             switch (input)
             {
@@ -92,7 +106,20 @@ namespace ConsoleApplication
                         Menu("");
                         break;
                     }
-
+                case "s":
+                case "S":
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Type the path where you want to save file and press enter.");
+                        ViewModel.ClickSave.Execute(null);
+                        if (ViewModel.PathForSerialization == null)
+                            Menu("Wrong path!\n");
+                        else
+                        {
+                            Menu("Serialization success!\n");
+                        }
+                        break;
+                    }
                 case "e":
                 case "E":
                     {
@@ -127,11 +154,9 @@ namespace ConsoleApplication
             {
                 string[] value = new string[4];
                 value[0] = "[" + index + "]: ";
-                //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                 value[1] = itemConsole.IsExpanded ? "[-] " : "[+] ";
                 value[2] = (string)TreeViewItemToStringConverter.Instance.Convert(itemConsole.TreeItem,null,null,null);
                 value[3] = itemConsole.TreeItem.Name;
-                //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                 ConsoleColor color = (ConsoleColor)TreeViewItemToConsoleColorConverter.Instance.Convert(itemConsole.TreeItem, null, null, null);
                 PrintWithTabAndColor(value, itemConsole.Id, color);
                 index++;

@@ -10,7 +10,7 @@ namespace ConsoleApplication.CmdHelper
         {
             string path = Console.ReadLine();
 
-            if (path != null && File.Exists(path) && path.EndsWith(".dll"))
+            if (path != null && File.Exists(path) && (path.EndsWith(".dll") || path.EndsWith(".xml")))
             {
                 return path;
             }
@@ -19,6 +19,12 @@ namespace ConsoleApplication.CmdHelper
 
         public string SaveToPath()
         {
+            string path = Console.ReadLine();
+
+            if (path != null && path.EndsWith(".xml"))
+            {
+                return path;
+            }
             return null;
         }
     }

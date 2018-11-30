@@ -6,6 +6,7 @@ using BusinessLogic.Logger;
 using BusinessLogic.Logger.Enum;
 using BusinessLogic.Logger.Interface;
 using BusinessLogic.ViewModel.TreeViewItems;
+using BusinessLogic.Model;
 using Serialization;
 
 namespace BusinessLogic.ViewModel
@@ -53,19 +54,42 @@ namespace BusinessLogic.ViewModel
                 LogFactory.Log(new MessageStructure("Path Loading Failed"), LogLevelEnum.Error);
                 return;
             }
-                LogFactory.Log(new MessageStructure("Path Loading Succeeded"), LogLevelEnum.Success);
-            try
+            LogFactory.Log(new MessageStructure("Path Loading Succeeded"), LogLevelEnum.Success);
+
+            if (PathVariable.EndsWith(".dll"))
             {
-                _reflector = new Reflector(PathVariable);
-                LogFactory.Log(new MessageStructure("Reflection has started"));
+                try
+                {
+                    _reflector = new Reflector(PathVariable);
+                    LogFactory.Log(new MessageStructure("Reflection has started"));
+                }
+                catch (Exception e)
+                {
+                    LogFactory.Log(new MessageStructure("Reflection Error: " + e.Message), LogLevelEnum.Error);
+                }
+                _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
+                LogFactory.Log(new MessageStructure("Showing tree view"));
+                ShowTreeView();
             }
-            catch (Exception e)
+
+            else if (PathVariable.EndsWith(".xml"))
             {
-                LogFactory.Log(new MessageStructure("Reflection Error: " + e.Message), LogLevelEnum.Error);
+                try
+                {
+                    LogFactory.Log(new MessageStructure("Deserialization has started"));
+                    _reflector = new Reflector(Serializer.Deserialize<AssemblyMetadata>(PathVariable));
+                }
+                catch (Exception e)
+                {
+                    LogFactory.Log(new MessageStructure("Deserialization error:" + e.Message), LogLevelEnum.Error);
+                }
+
+                LogFactory.Log(new MessageStructure("Deserialization success"), LogLevelEnum.Success);
+
+                _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
+                LogFactory.Log(new MessageStructure("Showing tree view"));
+                ShowTreeView();
             }
-            _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
-            LogFactory.Log(new MessageStructure("Showing tree view"));
-            ShowTreeView();
         }
 
         private void Save()

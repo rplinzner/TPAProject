@@ -17,5 +17,10 @@ namespace BusinessLogic.ViewModel.ReflectionItems
         {
             AssemblyModel = new AssemblyMetadata(assembly);
         }
+
+        public Reflector(AssemblyMetadata assembly)
+        {
+            AssemblyModel = assembly;
+        }
     }
 }

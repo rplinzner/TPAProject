@@ -1,5 +1,5 @@
 ﻿using BusinessLogic.Model;
-using BusinessLogic.Serialization;
+using Serialization;
 using BusinessLogic.ViewModel.ReflectionItems;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;

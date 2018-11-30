@@ -10,7 +10,7 @@ namespace WpfApplication.WpfHelper
         {
             OpenFileDialog of = new OpenFileDialog
             {
-                Filter = "Dynamic Library File(*.dll) | *.dll",
+                Filter = "Dynamic Library File(*.dll) | *.dll"+ "| XML File(*.xml) | *.xml",
                 RestoreDirectory = true
             };
             of.ShowDialog();

@@ -19,7 +19,7 @@ namespace BusinessLogic.ViewModel.TreeViewItems
             {
                 foreach (TypeMetadata genericArgument in MethodData.GenericArguments)
                 {
-                    children.Add(new TreeViewType(DictionarySingleton.Instance.Get(genericArgument.Name)));
+                    children.Add(new TreeViewType(genericArgument));
                 }
             }
 
@@ -33,7 +33,7 @@ namespace BusinessLogic.ViewModel.TreeViewItems
 
             if (MethodData.ReturnType != null)
             {
-                children.Add(new TreeViewType(DictionarySingleton.Instance.Get(MethodData.ReturnType.Name)));
+                children.Add(new TreeViewType(MethodData.ReturnType));
             }
             
         }

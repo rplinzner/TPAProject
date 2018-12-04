@@ -15,7 +15,7 @@ namespace BusinessLogic.ViewModel.TreeViewItems
         {
             if (PropertyData.Type != null)
             {
-                children.Add(new TreeViewType(DictionarySingleton.Instance.Get(PropertyData.Type.Name)));
+                children.Add(new TreeViewType(PropertyData.Type));
             }
         }
     }

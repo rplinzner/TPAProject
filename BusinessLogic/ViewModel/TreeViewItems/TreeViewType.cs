@@ -15,11 +15,11 @@ namespace BusinessLogic.ViewModel.TreeViewItems
         {
             if (TypeData.BaseType != null)
             {
-               children.Add(new TreeViewType(DictionarySingleton.Instance.Get(TypeData.BaseType.Name)));
+               children.Add(new TreeViewType(TypeData.BaseType));
             }
             if (TypeData.DeclaringType != null)
             {
-                children.Add(new TreeViewType(DictionarySingleton.Instance.Get(TypeData.DeclaringType.Name)));
+                children.Add(new TreeViewType(TypeData.DeclaringType));
             }
             if (TypeData.Properties != null)
             {
@@ -39,21 +39,21 @@ namespace BusinessLogic.ViewModel.TreeViewItems
             {
                 foreach (TypeMetadata TypeMetadata in TypeData.GenericArguments)
                 {
-                    children.Add(new TreeViewType(DictionarySingleton.Instance.Get(TypeMetadata.Name)));
+                    children.Add(new TreeViewType(TypeMetadata));
                 }
             }
             if (TypeData.ImplementedInterfaces != null)
             {
                 foreach (TypeMetadata TypeMetadata in TypeData.ImplementedInterfaces)
                 {
-                    children.Add(new TreeViewType(DictionarySingleton.Instance.Get(TypeMetadata.Name)));
+                    children.Add(new TreeViewType(TypeMetadata));
                 }
             }
             if (TypeData.NestedTypes != null)
             {
                 foreach (TypeMetadata TypeMetadata in TypeData.NestedTypes)
                 {
-                    children.Add(new TreeViewType(DictionarySingleton.Instance.Get(TypeMetadata.Name)));
+                    children.Add(new TreeViewType(TypeMetadata));
                 }
             }
             if (TypeData.Methods != null)

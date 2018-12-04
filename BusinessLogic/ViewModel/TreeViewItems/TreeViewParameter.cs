@@ -15,7 +15,7 @@ namespace BusinessLogic.ViewModel.TreeViewItems
         public override void Build(ObservableCollection<TreeViewItem> children)
         {
             if (ParameterData.Type == null) return;
-            children.Add(new TreeViewType(DictionarySingleton.Instance.Get(ParameterData.Type.Name)));
+            children.Add(new TreeViewType(ParameterData.Type));
         }
     }
 }

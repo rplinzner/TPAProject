@@ -18,7 +18,7 @@ namespace BusinessLogic.ViewModel.TreeViewItems
             if (Types == null) return;
             foreach (TypeMetadata typeModel in Types)
             {
-                children.Add(new TreeViewType(DictionarySingleton.Instance.Get(typeModel.Name)));
+                children.Add(new TreeViewType(typeModel));
             }
         }
     }

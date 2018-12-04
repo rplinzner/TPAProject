@@ -10,6 +10,8 @@ namespace BusinessLogic.Model
     public class TypeMetadata
     {
         #region Properties
+
+        private bool isAnalyzed;
         [DataMember]
         public string Name { get; set; }
         [DataMember]
@@ -44,48 +46,51 @@ namespace BusinessLogic.Model
         public TypeMetadata(Type type)
         {
             Name = type.Name;
-            if (!DictionarySingleton.Instance.ContainsKey(Name))
-            {
-                DictionarySingleton.Instance.Add(Name, this);
-            }
+            Modifiers = EmitModifiers(type);
+        }
 
+        private void Analyze(Type type)
+        {
             DeclaringType = EmitDeclaringType(type.DeclaringType);
             Constructors = MethodMetadata.EmitConstructors(type);
             Methods = MethodMetadata.EmitMethods(type);
             NestedTypes = EmitNestedTypes(type);
             ImplementedInterfaces = EmitImplements(type.GetInterfaces()).ToList();
-            GenericArguments = !type.IsGenericTypeDefinition ? null : EmitGenericArguments(type);
-            Modifiers = EmitModifiers(type);
+            GenericArguments = !type.IsGenericTypeDefinition ? null : EmitGenericArguments(type);      
             Properties = PropertyMetadata.EmitProperties(type);
             BaseType = EmitExtends(type.BaseType);
             Fields = EmitFields(type);
             Type = GetTypeEnum(type);
-        }
-
-        private TypeMetadata(string typeName, string namespaceName)
-        {
-            Name = typeName;
-            this.NamespaceName = namespaceName;
-        }
-
-        private TypeMetadata(string typeName, string namespaceName, IEnumerable<TypeMetadata> genericArguments) : this(
-            typeName, namespaceName)
-        {
-            this.GenericArguments = genericArguments.ToList();
+            isAnalyzed = true;
         }
 
         #endregion
 
         #region Methods
 
-        public static void StoreType(Type type)
+        public static TypeMetadata EmitType(Type type)
         {
-           if (!DictionarySingleton.Instance.ContainsKey(type.Name))
+            if (!DictionarySingleton.Instance.ContainsKey(type.Name))
             {
-                new TypeMetadata(type);
+                DictionarySingleton.Instance.Add(type.Name, new TypeMetadata(type));
             }
-        }
 
+            if (!DictionarySingleton.Instance.Get(type.Name).isAnalyzed)
+            {
+                DictionarySingleton.Instance.Get(type.Name).Analyze(type);
+            }
+
+            return DictionarySingleton.Instance.Get(type.Name);
+        }
+        public static TypeMetadata EmitReference(Type type)
+        {
+            if (!DictionarySingleton.Instance.ContainsKey(type.Name))
+            {
+                DictionarySingleton.Instance.Add(type.Name, new TypeMetadata(type));
+            }
+
+            return DictionarySingleton.Instance.Get(type.Name);
+        }
         private TypeEnum GetTypeEnum(Type type)
         {
             return type.IsEnum ? TypeEnum.Enum :
@@ -97,11 +102,6 @@ namespace BusinessLogic.Model
         public static List<TypeMetadata> EmitGenericArguments(Type type)
         {
             List<Type> arguments = type.GetGenericArguments().ToList();
-            foreach (Type typ in arguments)
-            {
-                StoreType(typ);
-            }
-
             return arguments.Select(EmitReference).ToList();
         }
 
@@ -114,7 +114,6 @@ namespace BusinessLogic.Model
             List<ParameterMetadata> parameters = new List<ParameterMetadata>();
             foreach (FieldInfo field in fieldInfo)
             {
-                StoreType(field.FieldType);
                 parameters.Add(new ParameterMetadata(field.Name, EmitReference(field.FieldType)));
             }
 
@@ -126,7 +125,6 @@ namespace BusinessLogic.Model
             if (baseType == null || baseType == typeof(Object) || baseType == typeof(ValueType) ||
                 baseType == typeof(Enum))
                 return null;
-            StoreType(baseType);
             return EmitReference(baseType);
         }
 
@@ -149,40 +147,24 @@ namespace BusinessLogic.Model
         }
 
 
-        public static TypeMetadata EmitReference(Type type)
-        {
-            if (!type.IsGenericType)
-                return new TypeMetadata(type.Name, type.GetNamespace());
 
-            return new TypeMetadata(type.Name, type.GetNamespace(), EmitGenericArguments(type));
-        }
 
         private TypeMetadata EmitDeclaringType(Type declaringType)
         {
             if (declaringType == null)
                 return null;
-            StoreType(declaringType);
             return EmitReference(declaringType);
         }
 
         private List<TypeMetadata> EmitNestedTypes(Type type)
         {
             List<Type> nestedTypes = type.GetNestedTypes(BindingFlags.Public | BindingFlags.NonPublic).ToList();
-            foreach (Type typ in nestedTypes)
-            {
-                StoreType(typ);
-            }
 
             return nestedTypes.Select(t => new TypeMetadata(t)).ToList();
         }
 
         private IEnumerable<TypeMetadata> EmitImplements(IEnumerable<Type> interfaces)
         {
-            foreach (Type @interface in interfaces)
-            {
-                StoreType(@interface);
-            }
-
             return from currentInterface in interfaces
                    select EmitReference(currentInterface);
 

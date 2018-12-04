@@ -18,7 +18,7 @@ namespace BusinessLogic.Model
         public NamespaceMetadata(string name, List<Type> types)
         {
             Name = name;
-            this.Types = (from type in types orderby type.Name select new TypeMetadata(type)).ToList();
+            this.Types = (from type in types orderby type.Name select TypeMetadata.EmitType(type)).ToList();
         }
     }
 }

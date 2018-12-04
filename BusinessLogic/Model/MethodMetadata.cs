@@ -76,7 +76,6 @@ namespace BusinessLogic.Model
             MethodInfo methodInfo = method as MethodInfo;
             if (methodInfo == null)
                 return null;
-            TypeMetadata.StoreType(methodInfo.ReturnType);
             return TypeMetadata.EmitReference(methodInfo.ReturnType);
         }
 

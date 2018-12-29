@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMDPathfinder", "CMDPathfin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFShowInfo", "WPFShowInfo\WPFShowInfo.csproj", "{8EB57E6D-D430-48F4-AEE4-3C68E8D4BCE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Composition", "Composition\Composition.csproj", "{45687B68-7DFF-40B7-9E69-F300AB441B3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{8EB57E6D-D430-48F4-AEE4-3C68E8D4BCE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EB57E6D-D430-48F4-AEE4-3C68E8D4BCE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EB57E6D-D430-48F4-AEE4-3C68E8D4BCE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45687B68-7DFF-40B7-9E69-F300AB441B3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45687B68-7DFF-40B7-9E69-F300AB441B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45687B68-7DFF-40B7-9E69-F300AB441B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45687B68-7DFF-40B7-9E69-F300AB441B3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

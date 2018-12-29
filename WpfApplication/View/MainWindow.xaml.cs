@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Composition;
 using ViewModel.Windows;
 
 namespace WpfApplication
@@ -11,7 +12,10 @@ namespace WpfApplication
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowVM();
+            MainWindowVM vm = new MainWindowVM();
+            Compose.Instance.ComposeParts(vm);
+            DataContext = vm;
+
         }
     }
 }

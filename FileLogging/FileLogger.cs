@@ -14,7 +14,8 @@ namespace FileLogging
 
         public FileLogger()
         {
-            FilePath = "";
+            //TODO: zmienić ten shit
+            FilePath = "WPFlog.txt";
         }
 
         public async void Log(MessageStructure message, LogLevelEnum level)

@@ -6,6 +6,7 @@ using ViewModel.TreeViewItems;
 using ViewModel.BaseItems;
 using BusinessLogic.ReflectionItems;
 using BusinessLogic.Model;
+using Composition;
 using Interfaces;
 using Logging;
 using Serialization;
@@ -60,19 +61,18 @@ namespace ViewModel.Windows
             HierarchicalAreas = new ObservableCollection<TreeViewItem>();
             ClickOpen = new RelayCommand(Open);
             ClickSave = new RelayCommand(Save);
-
         }
         #endregion
         private void Open()
         {
-            Logger.Log(new MessageStructure("Loading Path"));
+            //Logger.Log(new MessageStructure("Loading Path"));
             PathVariable = PathFinder.FindPath();
             if (PathVariable == null)
             {
                 Logger.Log(new MessageStructure("Path Loading Failed"), LogLevelEnum.Error);
                 return;
             }
-            Logger.Log(new MessageStructure("Path Loading Succeeded"), LogLevelEnum.Success);
+            //Logger.Log(new MessageStructure("Path Loading Succeeded"), LogLevelEnum.Success);
 
             if (PathVariable.EndsWith(".dll"))
             {

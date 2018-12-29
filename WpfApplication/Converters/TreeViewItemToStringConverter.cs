@@ -1,4 +1,4 @@
-﻿using BusinessLogic.ViewModel.TreeViewItems;
+﻿using ViewModel.TreeViewItems;
 using System;
 using System.Globalization;
 using System.Windows.Data;

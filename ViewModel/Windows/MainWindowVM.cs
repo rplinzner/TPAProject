@@ -1,26 +1,45 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel.Composition;
 using System.Windows.Input;
 using ViewModel.TreeViewItems;
 using ViewModel.BaseItems;
 using BusinessLogic.ReflectionItems;
+using BusinessLogic.Model;
 using Interfaces;
+using Logging;
+using Serialization;
 
 namespace ViewModel.Windows
 {
     public class MainWindowVM : BaseVM
     {
-        #region Props and fields
+
+        //TODO: zrobić osobny serwis
         public ISerializer Serializer = new XMLSerializer();
+        
+        
+        #region MEF
+        [Import(typeof(IPathFinder))]
+        public IPathFinder PathFinder { get; set; }
+        [Import(typeof(ILogger))]
+        public ILogger Logger { get; set; }
+        [Import(typeof(IShowInfo))]
+        public IShowInfo ShowInfo { get; set; }
+        #endregion
+
         public string PathForSerialization { get; set; }
 
         private string _pathVariable;
+
+        #region Commands
+
         public ICommand ClickOpen { get; }
         public ICommand ClickSave { get; }
-        public IPathFinder PathFinder { get; set; }
-        public ILogFactory LogFactory { get; set; }
+        
 
-
+        #endregion
+        
         private Reflector _reflector;
         public ObservableCollection<TreeViewItem> HierarchicalAreas { get; set; }
         private TreeViewAssembly _treeViewAssembly;
@@ -33,7 +52,7 @@ namespace ViewModel.Windows
                 OnPropertyChanged(nameof(PathVariable));
             }
         }
-        #endregion
+        
 
         #region ctor
         public MainWindowVM()
@@ -46,28 +65,30 @@ namespace ViewModel.Windows
         #endregion
         private void Open()
         {
-            LogFactory.Log(new MessageStructure("Loading Path"));
+            Logger.Log(new MessageStructure("Loading Path"));
             PathVariable = PathFinder.FindPath();
             if (PathVariable == null)
             {
-                LogFactory.Log(new MessageStructure("Path Loading Failed"), LogLevelEnum.Error);
+                Logger.Log(new MessageStructure("Path Loading Failed"), LogLevelEnum.Error);
                 return;
             }
-            LogFactory.Log(new MessageStructure("Path Loading Succeeded"), LogLevelEnum.Success);
+            Logger.Log(new MessageStructure("Path Loading Succeeded"), LogLevelEnum.Success);
 
             if (PathVariable.EndsWith(".dll"))
             {
                 try
                 {
                     _reflector = new Reflector(PathVariable);
-                    LogFactory.Log(new MessageStructure("Reflection has started"));
+                    Logger.Log(new MessageStructure("Reflection has started"));
+                    ShowInfo.Show("SUCCESS");
                 }
                 catch (Exception e)
                 {
-                    LogFactory.Log(new MessageStructure("Reflection Error: " + e.Message), LogLevelEnum.Error);
+                    Logger.Log(new MessageStructure("Reflection Error: " + e.Message), LogLevelEnum.Error);
+                    ShowInfo.Show("FAIL");
                 }
                 _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
-                LogFactory.Log(new MessageStructure("Showing tree view"));
+                Logger.Log(new MessageStructure("Showing tree view"));
                 ShowTreeView();
             }
 
@@ -75,40 +96,40 @@ namespace ViewModel.Windows
             {
                 try
                 {
-                    LogFactory.Log(new MessageStructure("Deserialization has started"));
+                    Logger.Log(new MessageStructure("Deserialization has started"));
                     _reflector = new Reflector(Serializer.Deserialize<AssemblyMetadata>(PathVariable));
                 }
                 catch (Exception e)
                 {
-                    LogFactory.Log(new MessageStructure("Deserialization error:" + e.Message), LogLevelEnum.Error);
+                    Logger.Log(new MessageStructure("Deserialization error:" + e.Message), LogLevelEnum.Error);
                 }
 
-                LogFactory.Log(new MessageStructure("Deserialization success"), LogLevelEnum.Success);
+                Logger.Log(new MessageStructure("Deserialization success"), LogLevelEnum.Success);
 
                 _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
-                LogFactory.Log(new MessageStructure("Showing tree view"));
+                Logger.Log(new MessageStructure("Showing tree view"));
                 ShowTreeView();
             }
         }
 
         private void Save()
         {
-            LogFactory.Log(new MessageStructure("Serialization has started"));
+            Logger.Log(new MessageStructure("Serialization has started"));
             PathForSerialization = PathFinder.SaveToPath();
             if (PathForSerialization == null)
             {
-                LogFactory.Log(new MessageStructure("Serialization failed - Path is null"), LogLevelEnum.Error);
+                Logger.Log(new MessageStructure("Serialization failed - Path is null"), LogLevelEnum.Error);
             }
             else
             {
                 try
                 {
                     Serializer.Serialize(PathForSerialization, _reflector.AssemblyModel);
-                    LogFactory.Log(new MessageStructure("Serializization completed"), LogLevelEnum.Success);
+                    Logger.Log(new MessageStructure("Serializization completed"), LogLevelEnum.Success);
                 }
                 catch (Exception e)
                 {
-                    LogFactory.Log(new MessageStructure("Serialization error:" + e.Message), LogLevelEnum.Error);
+                    Logger.Log(new MessageStructure("Serialization error:" + e.Message), LogLevelEnum.Error);
                 }
 
 

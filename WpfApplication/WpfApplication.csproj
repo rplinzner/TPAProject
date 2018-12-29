@@ -97,9 +97,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
-      <Project>{71590a12-a991-4fb2-8a89-6b2a48d6be26}</Project>
-      <Name>BusinessLogic</Name>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{9584b4b6-5eb9-4b7e-be59-5745975cfc33}</Project>
+      <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

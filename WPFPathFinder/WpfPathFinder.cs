@@ -1,9 +1,11 @@
-﻿using System.Windows;
+﻿using System.ComponentModel.Composition;
+using System.Windows;
 using Interfaces;
 using Microsoft.Win32;
 
 namespace WPFPathFinder
 {
+    [Export((typeof(IPathFinder)))]
     public class WpfPathFinder : IPathFinder
     {
         public string FindPath()
@@ -21,6 +23,21 @@ namespace WPFPathFinder
             }
 
             return of.FileName;
+        }
+        public string SaveToPath()
+        {
+            SaveFileDialog sf = new SaveFileDialog {
+                Filter = "XML File(*.xml) | *.xml",
+                RestoreDirectory = true
+            };
+            sf.ShowDialog();
+            if (sf.FileName.Length == 0)
+            {
+                MessageBox.Show("File has not been saved.", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+
+            return sf.FileName;
         }
     }
 }

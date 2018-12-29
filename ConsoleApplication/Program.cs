@@ -1,30 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BusinessLogic.Logger;
-using BusinessLogic.Logger.Enum;
-using BusinessLogic.Logger.Interface;
-using BusinessLogic.ViewModel;
-using BusinessLogic.ViewModel.TreeViewItems;
-using ConsoleApplication.CmdHelper;
 using ConsoleApplication.Converters;
 using ConsoleApplication.View;
+using ViewModel.Windows;
+using ViewModel.TreeViewItems;
 
 namespace ConsoleApplication
 {
     class Program
     {
-        public static MainWindowVM ViewModel { get; set; } = new MainWindowVM()
-        {
-            PathFinder = new CmdPathFinder(),
-            LogFactory = new BaseLogFactory(new List<ILogger>
-            {
-                new FileLogger("CMDlog.txt")
-            },LogOutputLevelEnum.Debug)
-        };
+        public static MainWindowVM ViewModel { get; set; } = new MainWindowVM();
 
         public static TreeViewCmd CmdView { get; set; }
 

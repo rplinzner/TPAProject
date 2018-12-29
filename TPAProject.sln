@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "Logging\Logging.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileLogging", "FileLogging\FileLogging.csproj", "{2C53E0A1-58ED-4D60-994D-B4A16D035FBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMDPathfinder", "CMDPathfinder\CMDPathfinder.csproj", "{3500DFB8-833E-4E54-8E21-3703E3B05B9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFShowInfo", "WPFShowInfo\WPFShowInfo.csproj", "{8EB57E6D-D430-48F4-AEE4-3C68E8D4BCE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{2C53E0A1-58ED-4D60-994D-B4A16D035FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C53E0A1-58ED-4D60-994D-B4A16D035FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C53E0A1-58ED-4D60-994D-B4A16D035FBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3500DFB8-833E-4E54-8E21-3703E3B05B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3500DFB8-833E-4E54-8E21-3703E3B05B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3500DFB8-833E-4E54-8E21-3703E3B05B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3500DFB8-833E-4E54-8E21-3703E3B05B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EB57E6D-D430-48F4-AEE4-3C68E8D4BCE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB57E6D-D430-48F4-AEE4-3C68E8D4BCE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB57E6D-D430-48F4-AEE4-3C68E8D4BCE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB57E6D-D430-48F4-AEE4-3C68E8D4BCE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,18 +1,20 @@
 ﻿using System;
+using System.ComponentModel.Composition;
 using System.IO;
 using Logging;
 
 namespace FileLogging
 {
+    [Export(typeof(ILogger))]
     public class FileLogger : ILogger
     {
         public string FilePath { get; set; }
 
         public LogOutputLevelEnum OutputLevel { get; set; }
 
-        public FileLogger(string filePath)
+        public FileLogger()
         {
-            FilePath = filePath;
+            FilePath = "";
         }
 
         public async void Log(MessageStructure message, LogLevelEnum level)

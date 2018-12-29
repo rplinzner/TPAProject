@@ -43,8 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logger\BaseLogFactory.cs" />
-    <Compile Include="Logger\Interface\ILogFactory.cs" />
     <Compile Include="Model\AssemblyMetadata.cs" />
     <Compile Include="ReflectionItems\Reflector.cs" />
     <Compile Include="Singleton\DictionarySingleton.cs" />

@@ -1,9 +1,11 @@
-﻿using BusinessLogic.ViewModel;
+﻿using Interfaces;
 using System;
+using System.ComponentModel.Composition;
 using System.IO;
 
-namespace ConsoleApplication.CmdHelper
+namespace CMDPathFinder
 {
+    [Export(typeof(IPathFinder))]
     public class CmdPathFinder : IPathFinder
     {
         public string FindPath()

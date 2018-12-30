@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Composition;
+using System.Configuration;
 using System.IO;
 using Logging;
 
@@ -14,8 +15,7 @@ namespace FileLogging
 
         public FileLogger()
         {
-            //TODO: zmienić ten shit
-            FilePath = "WPFlog.txt";
+            GetSettings();
         }
 
         public async void Log(MessageStructure message, LogLevelEnum level)
@@ -31,6 +31,15 @@ namespace FileLogging
                     $" [{message.FileName}] in {message.OriginName}() line {message.LineNumber}: {message.Message}";
                 await fileStream.WriteLineAsync(msg);
             }
+        }
+
+        public void GetSettings()
+        {
+            FilePath = ConfigurationManager.AppSettings["loggingFilename"] ?? "Log.txt";
+            string LogLvl = ConfigurationManager.AppSettings["loggingLevel"] ?? "1";
+            int level = int.Parse(LogLvl);
+            OutputLevel = (LogOutputLevelEnum)level;
+
         }
     }
 }

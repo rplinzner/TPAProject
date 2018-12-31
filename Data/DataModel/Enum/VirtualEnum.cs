@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Model
+namespace Data.DataModel
 {
-    public enum StaticEnum
+    public enum VirtualEnum
     {
-        NotStatic, Static
+        NotVirtual, Virtual
     }
 }

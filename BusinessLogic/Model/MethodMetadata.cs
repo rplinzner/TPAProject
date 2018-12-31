@@ -4,25 +4,19 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using Data.DataModel;
 
 namespace BusinessLogic.Model
 {
-    [DataContract(IsReference = true)]
     public class MethodMetadata
     {
         #region Properties
 
-        [DataMember]
         public string Name { get; set; }
-        [DataMember]
         public List<TypeMetadata> GenericArguments { get; set; }
-        [DataMember]
         public Tuple<AccessLevel, AbstractEnum, StaticEnum, VirtualEnum> Modifiers { get; set; }
-        [DataMember]
         public TypeMetadata ReturnType { get; set; }
-        [DataMember]
         public bool Extension { get; set; }
-        [DataMember]
         public List<ParameterMetadata> Parameters { get; set; }
         #endregion
 

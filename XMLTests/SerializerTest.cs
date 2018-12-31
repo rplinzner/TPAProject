@@ -1,6 +1,6 @@
 ﻿using BusinessLogic.Model;
 using Serialization;
-using BusinessLogic.ViewModel.ReflectionItems;
+using BusinessLogic.ReflectionItems;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnitTests
+namespace XMLTests
 {
     [TestClass]
     public class SerializerTest

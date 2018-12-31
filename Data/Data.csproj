@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CFD56BCD-0D96-485E-AD38-9D260C6035F4}</ProjectGuid>
+    <ProjectGuid>{0ABA202D-9EB2-4766-9B8C-E3DD42B796B1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Serialization</RootNamespace>
-    <AssemblyName>Serialization</AssemblyName>
+    <RootNamespace>Data</RootNamespace>
+    <AssemblyName>Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,6 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModel\BaseAssemblyMetadata.cs" />
+    <Compile Include="DataModel\Enum\AbstractEnum.cs" />
+    <Compile Include="DataModel\Enum\AccessLevel.cs" />
+    <Compile Include="DataModel\Enum\SealedEnum.cs" />
+    <Compile Include="DataModel\Enum\StaticEnum.cs" />
+    <Compile Include="DataModel\Enum\TypeEnum.cs" />
+    <Compile Include="DataModel\Enum\VirtualEnum.cs" />
+    <Compile Include="DataModel\BaseMethodMetadata.cs" />
+    <Compile Include="DataModel\BaseNamespaceMetadata.cs" />
+    <Compile Include="DataModel\BaseParameterMetadata.cs" />
+    <Compile Include="DataModel\BasePropertyMetadata.cs" />
+    <Compile Include="DataModel\BaseTypeMetadata.cs" />
+    <Compile Include="ISerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

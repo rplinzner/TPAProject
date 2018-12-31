@@ -1,13 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BusinessLogic.ViewModel;
-using BusinessLogic.ViewModel.TreeViewItems;
-using BusinessLogic.ViewModel.ReflectionItems;
+using ViewModel;
+using ViewModel.TreeViewItems;
+using BusinessLogic.ReflectionItems;
 using System.Collections.Generic;
 using BusinessLogic.Model;
 using System.Linq;
+using Data.DataModel;
 
-namespace UnitTests
+namespace XMLTests
 {
     [TestClass]
     public class ReflectorTests

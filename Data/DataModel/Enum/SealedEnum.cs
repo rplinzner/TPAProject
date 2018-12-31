@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Model
+namespace Data.DataModel
 {
-    public enum VirtualEnum
+    public enum SealedEnum
     {
-        NotVirtual, Virtual
+        NotSealed, Sealed
     }
 }

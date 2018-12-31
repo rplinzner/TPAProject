@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data.DataModel;
 
-namespace Serialization
+namespace Data
 {
     public interface ISerializer
     {
-        void Serialize<T>(string path, T obj);
-        T Deserialize<T>(string path);
+        void Serialize(string path, BaseAssemblyMetadata obj);
+        BaseAssemblyMetadata Deserialize(string path);
     }
 }

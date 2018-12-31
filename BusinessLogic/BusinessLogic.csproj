@@ -46,12 +46,6 @@
     <Compile Include="Model\AssemblyMetadata.cs" />
     <Compile Include="ReflectionItems\Reflector.cs" />
     <Compile Include="Singleton\DictionarySingleton.cs" />
-    <Compile Include="Model\Enum\AbstractEnum.cs" />
-    <Compile Include="Model\Enum\AccessLevel.cs" />
-    <Compile Include="Model\Enum\SealedEnum.cs" />
-    <Compile Include="Model\Enum\StaticEnum.cs" />
-    <Compile Include="Model\Enum\TypeEnum.cs" />
-    <Compile Include="Model\Enum\VirtualEnum.cs" />
     <Compile Include="Model\ExtensionMethods.cs" />
     <Compile Include="Model\MethodMetadata.cs" />
     <Compile Include="Model\NamespaceMetadata.cs" />
@@ -62,9 +56,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Serialization\Serialization.csproj">
-      <Project>{cfd56bcd-0d96-485e-ad38-9d260c6035f4}</Project>
-      <Name>Serialization</Name>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{0aba202d-9eb2-4766-9b8c-e3dd42b796b1}</Project>
+      <Name>Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

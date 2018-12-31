@@ -5,12 +5,9 @@ using System.Runtime.Serialization;
 
 namespace BusinessLogic.Model
 {
-    [DataContract(IsReference = true)]
     public class NamespaceMetadata
     {
-        [DataMember]
         public string Name { get; set; }
-        [DataMember]
         public List<TypeMetadata> Types { get; set; }
 
         public NamespaceMetadata() { }

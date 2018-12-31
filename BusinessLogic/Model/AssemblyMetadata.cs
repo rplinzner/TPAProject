@@ -6,12 +6,10 @@ using System.Runtime.Serialization;
 
 namespace BusinessLogic.Model
 {
-    [DataContract]
+
     public class AssemblyMetadata 
     {
-        [DataMember]
         public string Name { get; set; }
-        [DataMember]
         public List<NamespaceMetadata> Namespaces { get; set; }
 
         public AssemblyMetadata() { }

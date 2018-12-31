@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Model
+namespace Data.DataModel
 {
-    public enum AccessLevel
+    public enum AbstractEnum
     {
-        None, Public, Protected, Internal, Private
+        NotAbstract, Abstract
     }
 }

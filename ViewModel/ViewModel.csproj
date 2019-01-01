@@ -63,6 +63,10 @@
       <Project>{45687b68-7dff-40b7-9e69-f300ab441b3a}</Project>
       <Name>Composition</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{0aba202d-9eb2-4766-9b8c-e3dd42b796b1}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">
       <Project>{42025788-6176-4792-84bb-018554dfcc26}</Project>
       <Name>Interfaces</Name>

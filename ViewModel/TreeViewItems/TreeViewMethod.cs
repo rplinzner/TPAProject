@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using BusinessLogic.Model;
+using Data.DataModel;
 
 namespace ViewModel.TreeViewItems
 {

@@ -9,7 +9,7 @@ using BusinessLogic.Model;
 using Composition;
 using Interfaces;
 using Logging;
-using Serialization;
+using Data;
 
 namespace ViewModel.Windows
 {
@@ -17,7 +17,7 @@ namespace ViewModel.Windows
     {
 
         //TODO: zrobić osobny serwis
-        public ISerializer Serializer = new XMLSerializer();
+        //public ISerializer Serializer = new XMLSerializer();
         
         
         #region MEF
@@ -97,7 +97,7 @@ namespace ViewModel.Windows
                 try
                 {
                     Logger.Log(new MessageStructure("Deserialization has started"));
-                    _reflector = new Reflector(Serializer.Deserialize<AssemblyMetadata>(PathVariable));
+                    //_reflector = new Reflector(Serializer.Deserialize<AssemblyMetadata>(PathVariable));
                 }
                 catch (Exception e)
                 {
@@ -124,7 +124,7 @@ namespace ViewModel.Windows
             {
                 try
                 {
-                    Serializer.Serialize(PathForSerialization, _reflector.AssemblyModel);
+                    //Serializer.Serialize(PathForSerialization, _reflector.AssemblyModel);
                     Logger.Log(new MessageStructure("Serializization completed"), LogLevelEnum.Success);
                 }
                 catch (Exception e)

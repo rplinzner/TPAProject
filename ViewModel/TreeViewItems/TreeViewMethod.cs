@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using BusinessLogic.Model;
-using Data.DataModel;
 
 namespace ViewModel.TreeViewItems
 {
@@ -9,7 +8,7 @@ namespace ViewModel.TreeViewItems
     {
         public MethodMetadata MethodData;
 
-        public TreeViewMethod(MethodMetadata methodMetadata):base(methodMetadata.Name)
+        public TreeViewMethod(MethodMetadata methodMetadata):base(GetFullName(methodMetadata))
         {
             MethodData= methodMetadata;
         }
@@ -41,12 +40,7 @@ namespace ViewModel.TreeViewItems
 
         public static string GetFullName(MethodMetadata model)
         {
-            string fullname = "";
-            fullname += model.Modifiers.Item1.ToString().ToLower() + " ";
-            fullname += model.Modifiers.Item2 == AbstractEnum.Abstract ? AbstractEnum.Abstract.ToString().ToLower() + " " : "";
-            fullname += model.Modifiers.Item3 == StaticEnum.Static ? StaticEnum.Static.ToString().ToLower() + " " : "";
-            fullname += model.Modifiers.Item4 == VirtualEnum.Virtual ? VirtualEnum.Virtual.ToString().ToLower() + " " : "";
-            return fullname;
+            return model.GetFullName();
         }
     }
 }

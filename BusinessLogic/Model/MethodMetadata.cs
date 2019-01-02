@@ -79,5 +79,17 @@ namespace BusinessLogic.Model
         {
             return type.GetConstructors().Select(t => new MethodMetadata(t)).ToList();
         }
+
+        public string GetFullName()
+        {
+            string fullname = "";
+            fullname += Modifiers.Item1.ToString().ToLower() + " ";
+            fullname += Modifiers.Item2 == AbstractEnum.Abstract ? AbstractEnum.Abstract.ToString().ToLower() + " " : "";
+            fullname += Modifiers.Item3 == StaticEnum.Static ? StaticEnum.Static.ToString().ToLower() + " " : "";
+            fullname += Modifiers.Item4 == VirtualEnum.Virtual ? VirtualEnum.Virtual.ToString().ToLower() + " " : "";
+            fullname += Name;
+            return fullname;
+        }
+
     }
 }

@@ -20,7 +20,7 @@ namespace Composition
 
         private List<DirectoryCatalog> _extensionCatalogs = new List<DirectoryCatalog>();
         private AggregateCatalog _catalog;
-        private CompositionContainer _container;
+        public CompositionContainer _container;
 
         public void AddCatalog(DirectoryCatalog obj)
         {

@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
+using BusinessLogic;
 using ViewModel.TreeViewItems;
 using ViewModel.BaseItems;
 using BusinessLogic.ReflectionItems;
@@ -27,6 +28,8 @@ namespace ViewModel.Windows
         public ILogger Logger { get; set; }
         [Import(typeof(IShowInfo))]
         public IShowInfo ShowInfo { get; set; }
+        [Import(typeof(ReflectionService))]
+        public ReflectionService Service { get; set; }
         #endregion
 
         public string PathForSerialization { get; set; }
@@ -65,14 +68,14 @@ namespace ViewModel.Windows
         #endregion
         private void Open()
         {
-            //Logger.Log(new MessageStructure("Loading Path"));
+            Logger.Log(new MessageStructure("Loading Path"));
             PathVariable = PathFinder.FindPath();
             if (PathVariable == null)
             {
                 Logger.Log(new MessageStructure("Path Loading Failed"), LogLevelEnum.Error);
                 return;
             }
-            //Logger.Log(new MessageStructure("Path Loading Succeeded"), LogLevelEnum.Success);
+            Logger.Log(new MessageStructure("Path Loading Succeeded"), LogLevelEnum.Success);
 
             if (PathVariable.EndsWith(".dll"))
             {
@@ -97,7 +100,7 @@ namespace ViewModel.Windows
                 try
                 {
                     Logger.Log(new MessageStructure("Deserialization has started"));
-                    //_reflector = new Reflector(Serializer.Deserialize<AssemblyMetadata>(PathVariable));
+                    _reflector = new Reflector(Service.Load(PathVariable));
                 }
                 catch (Exception e)
                 {
@@ -124,15 +127,15 @@ namespace ViewModel.Windows
             {
                 try
                 {
-                    //Serializer.Serialize(PathForSerialization, _reflector.AssemblyModel);
+                    Service.Save(PathForSerialization, _reflector.AssemblyModel);
                     Logger.Log(new MessageStructure("Serializization completed"), LogLevelEnum.Success);
+                    ShowInfo.Show("Serialization completed");
                 }
                 catch (Exception e)
                 {
-                    Logger.Log(new MessageStructure("Serialization error:" + e.Message), LogLevelEnum.Error);
+                    Logger.Log(new MessageStructure("Serialization error: " + e.Message), LogLevelEnum.Error);
+                    ShowInfo.Show("Serialization error, check log for more info");
                 }
-
-
             }
         }
 

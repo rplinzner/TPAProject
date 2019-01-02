@@ -35,8 +35,10 @@ namespace FileLogging
 
         public void GetSettings()
         {
-            FilePath = ConfigurationManager.AppSettings["loggingFilename"] ?? "Log.txt";
+            FilePath = ConfigurationManager.AppSettings["loggingFilename"];
+            if (string.IsNullOrEmpty(FilePath)) FilePath = "Logger.log";
             string LogLvl = ConfigurationManager.AppSettings["loggingLevel"] ?? "1";
+            if (string.IsNullOrEmpty(LogLvl)) LogLvl = "1";
             int level = int.Parse(LogLvl);
             OutputLevel = (LogOutputLevelEnum)level;
 

@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
@@ -52,6 +53,7 @@
     <Compile Include="Mapper\TypeModelMapper.cs" />
     <Compile Include="Model\AssemblyMetadata.cs" />
     <Compile Include="ReflectionItems\Reflector.cs" />
+    <Compile Include="ReflectionService.cs" />
     <Compile Include="Singleton\DictionarySingleton.cs" />
     <Compile Include="Model\ExtensionMethods.cs" />
     <Compile Include="Model\MethodMetadata.cs" />
@@ -63,6 +65,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Composition\Composition.csproj">
+      <Project>{45687b68-7dff-40b7-9e69-f300ab441b3a}</Project>
+      <Name>Composition</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{0aba202d-9eb2-4766-9b8c-e3dd42b796b1}</Project>
       <Name>Data</Name>

@@ -6,7 +6,6 @@ using Data.DataModel;
 
 namespace BusinessLogic
 {
-    [Export(typeof(ReflectionService))]
     public class ReflectionService
     {
         public BaseAssemblyMetadata Assembly = Composition.Compose.Instance._container.GetExportedValue<BaseAssemblyMetadata>();

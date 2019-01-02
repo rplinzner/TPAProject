@@ -8,13 +8,12 @@ using Data.DataModel;
 
 namespace XMLData.XMLModel
 {
-    [DataContract(IsReference = true)]
     [Export(typeof(BaseAssemblyMetadata))]
     public class XMLAssemblyMetadata : BaseAssemblyMetadata
     {
-        [DataMember]
+        
         public override string Name { get; set; }
-        [DataMember]
+        
         public new List<XMLNamespaceMetadata> Namespaces { get; set; }
 
     }

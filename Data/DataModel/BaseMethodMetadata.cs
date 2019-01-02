@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 
 namespace Data.DataModel
 {
-    [DataContract(IsReference = true)]
     public abstract class BaseMethodMetadata
     {
         #region Properties

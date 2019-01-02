@@ -30,6 +30,8 @@ namespace BusinessLogic.Model
 
         #region Constructors
 
+        public TypeMetadata() { }
+
         public TypeMetadata(Type type)
         {
             Name = type.Name;

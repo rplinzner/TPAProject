@@ -20,6 +20,8 @@ namespace BusinessLogic.Model
         public List<ParameterMetadata> Parameters { get; set; }
         #endregion
 
+        public MethodMetadata() { }
+
         public MethodMetadata(MethodBase method)
         {
             Name = method.Name;

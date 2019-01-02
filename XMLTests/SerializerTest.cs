@@ -1,6 +1,9 @@
 ﻿using BusinessLogic.Model;
-using Serialization;
+using XMLData;
+using XMLData.XMLModel;
 using BusinessLogic.ReflectionItems;
+using Data.DataModel;
+using BusinessLogic.Mapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -15,14 +18,15 @@ namespace XMLTests
     {
         private string path = @"..\..\..\ClassesForTesting\bin\Debug\ClassesForTesting.dll";
         private string XMLFilePath = "test.xml";
+        private BaseAssemblyMetadata assemblyModel = new XMLAssemblyMetadata();
 
         [TestMethod]
         public void HowManyNamespacesTest()
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, reflector.AssemblyModel);
-            AssemblyMetadata model = xmlSerializer.Deserialize<AssemblyMetadata>(XMLFilePath);
+            xmlSerializer.Serialize(path, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(path));
             Assert.AreEqual(3, model.Namespaces.Count);
         }
     }

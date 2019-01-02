@@ -43,6 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapper\AssemblyModelMapper.cs" />
+    <Compile Include="Mapper\HelperClass.cs" />
+    <Compile Include="Mapper\MethodModelMapper.cs" />
+    <Compile Include="Mapper\NamespaceModelMapper.cs" />
+    <Compile Include="Mapper\ParameterModelMapper.cs" />
+    <Compile Include="Mapper\PropertyModelMapper.cs" />
+    <Compile Include="Mapper\TypeModelMapper.cs" />
     <Compile Include="Model\AssemblyMetadata.cs" />
     <Compile Include="ReflectionItems\Reflector.cs" />
     <Compile Include="Singleton\DictionarySingleton.cs" />

@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XMLTests
+namespace Tests.XMLTests
 {
     [TestClass]
     public class SerializerTest
@@ -25,8 +25,8 @@ namespace XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(path, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
-            AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(path));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
             Assert.AreEqual(3, model.Namespaces.Count);
         }
     }

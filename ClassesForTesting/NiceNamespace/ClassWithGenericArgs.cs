@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassesForTesting.NiceNamespace
+namespace Tests.ClassesForTesting.NiceNamespace
 {
     public class ClassWithGenericArgs<T1,T2>
     {

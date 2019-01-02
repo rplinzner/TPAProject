@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLData", "XMLData\XMLData.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLTests", "XMLTests\XMLTests.csproj", "{207C05B0-E701-4CA1-933E-2CA64B143011}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BB6CBD99-34E9-4B06-B1C7-F6184EF8A12A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +110,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2AAD1C88-48EA-4898-8F30-9A3D90D8BC82} = {BB6CBD99-34E9-4B06-B1C7-F6184EF8A12A}
+		{307CDC07-4DE8-40FA-9420-A882AFED6FAA} = {BB6CBD99-34E9-4B06-B1C7-F6184EF8A12A}
+		{207C05B0-E701-4CA1-933E-2CA64B143011} = {BB6CBD99-34E9-4B06-B1C7-F6184EF8A12A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D2692E1-5422-44C4-9679-FB45BF8869D0}

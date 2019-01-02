@@ -16,7 +16,7 @@ namespace BusinessLogic.Mapper
             AssemblyMetadata assemblyModel = new AssemblyMetadata();
             Type type = model.GetType();
             assemblyModel.Name = model.Name;
-            PropertyInfo namespaceModelsProperty = type.GetProperty("NamespaceModels",
+            PropertyInfo namespaceModelsProperty = type.GetProperty("Namespaces",
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
             List<BaseNamespaceMetadata> namespaceModels= (List<BaseNamespaceMetadata>)HelperClass.ConvertList(typeof(BaseNamespaceMetadata),(IList)namespaceModelsProperty?.GetValue(model));
             if (namespaceModels != null)
@@ -28,7 +28,7 @@ namespace BusinessLogic.Mapper
         {
             object assemblyModel = Activator.CreateInstance(assemblyModelType);
             PropertyInfo nameProperty = assemblyModelType.GetProperty("Name");
-            PropertyInfo namespaceModelsProperty = assemblyModelType.GetProperty("NamespaceModels",
+            PropertyInfo namespaceModelsProperty = assemblyModelType.GetProperty("Namespaces",
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
             nameProperty?.SetValue(assemblyModel,model.Name);
             namespaceModelsProperty?.SetValue(

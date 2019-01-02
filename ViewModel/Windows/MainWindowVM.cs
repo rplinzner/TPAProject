@@ -28,8 +28,8 @@ namespace ViewModel.Windows
         public ILogger Logger { get; set; }
         [Import(typeof(IShowInfo))]
         public IShowInfo ShowInfo { get; set; }
-        [Import(typeof(ReflectionService))]
-        public ReflectionService Service { get; set; }
+        //[Import(typeof(ReflectionService))]
+        public ReflectionService Service { get; set; } = new ReflectionService();
         #endregion
 
         public string PathForSerialization { get; set; }

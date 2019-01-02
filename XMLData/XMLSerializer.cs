@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 using System.IO;
 using Data;
 using Data.DataModel;
+using Newtonsoft.Json;
 using XMLData.XMLModel;
 
 namespace XMLData
@@ -13,21 +14,22 @@ namespace XMLData
         public void Serialize(string path, BaseAssemblyMetadata obj)
         {
             XMLAssemblyMetadata xmlMetadata = (XMLAssemblyMetadata)obj;
-            DataContractSerializer dcs =
-                new DataContractSerializer(typeof(XMLAssemblyMetadata));
+            string name = JsonConvert.SerializeObject(xmlMetadata, Formatting.Indented,
+                new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
 
-            using (FileStream fileStream = new FileStream(path, FileMode.Create))
+            using (StreamWriter file = new StreamWriter(path, true))
             {
-                dcs.WriteObject(fileStream, xmlMetadata);
+                file.Write(name);
             }
         }
 
         public BaseAssemblyMetadata Deserialize (string path)
         {
-            DataContractSerializer dataContractSerializer = new DataContractSerializer(typeof(XMLAssemblyMetadata));
-            using (FileStream fileStream = new FileStream(path, FileMode.Open))
+            using (StreamReader file = new StreamReader(path, true))
             {
-                return (XMLAssemblyMetadata)dataContractSerializer.ReadObject(fileStream);
+                string reader = file.ReadToEnd();
+                return JsonConvert.DeserializeObject<XMLAssemblyMetadata>(reader,
+                    new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
             }
         }
 

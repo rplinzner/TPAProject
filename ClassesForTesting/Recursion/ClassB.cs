@@ -1,4 +1,4 @@
-﻿namespace ClassesForTesting.Recursion
+﻿namespace Tests.ClassesForTesting.Recursion
 {
     public class ClassB
     {

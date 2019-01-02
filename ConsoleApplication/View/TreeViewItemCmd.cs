@@ -1,10 +1,5 @@
-﻿using BusinessLogic.ViewModel.TreeViewItems;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using ViewModel.TreeViewItems;
 
 namespace ConsoleApplication.View
 {

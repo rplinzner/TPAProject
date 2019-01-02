@@ -3,45 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
+using Data.DataModel;
 
 namespace BusinessLogic.Model
 {
-    [DataContract(IsReference = true)]
     public class TypeMetadata
     {
         #region Properties
 
         private bool isAnalyzed;
-        [DataMember]
         public string Name { get; set; }
-        [DataMember]
         public string NamespaceName { get; set; }
-        [DataMember]
         public TypeMetadata BaseType { get; set; }
-        [DataMember]
         public List<TypeMetadata> GenericArguments { get; set; }
-        [DataMember]
         public Tuple<AccessLevel, SealedEnum, AbstractEnum, StaticEnum> Modifiers { get; set; }
-        [DataMember]
         public TypeEnum Type { get; set; }
-        [DataMember]
         public List<TypeMetadata> ImplementedInterfaces { get; set; }
-        [DataMember]
         public List<TypeMetadata> NestedTypes { get; set; }
-        [DataMember]
         public List<PropertyMetadata> Properties { get; set; }
-        [DataMember]
         public TypeMetadata DeclaringType { get; set; }
-        [DataMember]
         public List<MethodMetadata> Methods { get; set; }
-        [DataMember]
         public List<MethodMetadata> Constructors { get; set; }
-        [DataMember]
         public List<ParameterMetadata> Fields { get; set; }
 
         #endregion
 
         #region Constructors
+
+        public TypeMetadata() { }
 
         public TypeMetadata(Type type)
         {
@@ -169,6 +158,20 @@ namespace BusinessLogic.Model
                    select EmitReference(currentInterface);
 
             #endregion
+        }
+
+        public string GetFullName()
+        {
+            if (Modifiers == null) return null;
+
+            string fullname = "";
+            fullname += Modifiers.Item1.ToString().ToLower() + " ";
+            fullname += Modifiers.Item2 == SealedEnum.Sealed ? SealedEnum.Sealed.ToString().ToLower() + " " : "";
+            fullname += Modifiers.Item3 == AbstractEnum.Abstract ? AbstractEnum.Abstract.ToString().ToLower() + " " : "";
+            fullname += Modifiers.Item4 == StaticEnum.Static ? StaticEnum.Static.ToString().ToLower() + " " : "";
+            fullname += Type.ToString().ToLower() + " ";
+            fullname += Name;
+            return fullname;
         }
     }
 }

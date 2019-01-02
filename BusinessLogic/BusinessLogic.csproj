@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
@@ -43,21 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logger\BaseLogFactory.cs" />
-    <Compile Include="Logger\Enum\LogLevelEnum.cs" />
-    <Compile Include="Logger\Enum\LogOutputLevelEnum.cs" />
-    <Compile Include="Logger\FileLogger.cs" />
-    <Compile Include="Logger\Interface\ILogFactory.cs" />
-    <Compile Include="Logger\Interface\ILogger.cs" />
-    <Compile Include="Logger\MessageStructure.cs" />
+    <Compile Include="Mapper\AssemblyModelMapper.cs" />
+    <Compile Include="Mapper\HelperClass.cs" />
+    <Compile Include="Mapper\MethodModelMapper.cs" />
+    <Compile Include="Mapper\NamespaceModelMapper.cs" />
+    <Compile Include="Mapper\ParameterModelMapper.cs" />
+    <Compile Include="Mapper\PropertyModelMapper.cs" />
+    <Compile Include="Mapper\TypeModelMapper.cs" />
     <Compile Include="Model\AssemblyMetadata.cs" />
+    <Compile Include="ReflectionItems\Reflector.cs" />
+    <Compile Include="ReflectionService.cs" />
     <Compile Include="Singleton\DictionarySingleton.cs" />
-    <Compile Include="Model\Enum\AbstractEnum.cs" />
-    <Compile Include="Model\Enum\AccessLevel.cs" />
-    <Compile Include="Model\Enum\SealedEnum.cs" />
-    <Compile Include="Model\Enum\StaticEnum.cs" />
-    <Compile Include="Model\Enum\TypeEnum.cs" />
-    <Compile Include="Model\Enum\VirtualEnum.cs" />
     <Compile Include="Model\ExtensionMethods.cs" />
     <Compile Include="Model\MethodMetadata.cs" />
     <Compile Include="Model\NamespaceMetadata.cs" />
@@ -66,23 +63,15 @@
     <Compile Include="Model\TypeMetadata.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\BaseItems\BaseVM.cs" />
-    <Compile Include="ViewModel\BaseItems\RelayCommand.cs" />
-    <Compile Include="ViewModel\Interfaces\IPathFinder.cs" />
-    <Compile Include="ViewModel\ReflectionItems\Reflector.cs" />
-    <Compile Include="ViewModel\TreeViewItems\TreeViewAssembly.cs" />
-    <Compile Include="ViewModel\TreeViewItems\TreeViewItem.cs" />
-    <Compile Include="ViewModel\TreeViewItems\TreeViewMethod.cs" />
-    <Compile Include="ViewModel\TreeViewItems\TreeViewNamespace.cs" />
-    <Compile Include="ViewModel\TreeViewItems\TreeViewParameter.cs" />
-    <Compile Include="ViewModel\TreeViewItems\TreeViewProperty.cs" />
-    <Compile Include="ViewModel\TreeViewItems\TreeViewType.cs" />
-    <Compile Include="ViewModel\Windows\MainWindowVM.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Serialization\Serialization.csproj">
-      <Project>{cfd56bcd-0d96-485e-ad38-9d260c6035f4}</Project>
-      <Name>Serialization</Name>
+    <ProjectReference Include="..\Composition\Composition.csproj">
+      <Project>{45687b68-7dff-40b7-9e69-f300ab441b3a}</Project>
+      <Name>Composition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{0aba202d-9eb2-4766-9b8c-e3dd42b796b1}</Project>
+      <Name>Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

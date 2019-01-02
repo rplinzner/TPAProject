@@ -3,7 +3,7 @@ using System.CodeDom;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
-using BusinessLogic.ViewModel.TreeViewItems;
+using ViewModel.TreeViewItems;
 
 namespace WpfApplication.Converters
 {

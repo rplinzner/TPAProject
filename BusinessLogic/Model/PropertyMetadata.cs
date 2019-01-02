@@ -6,16 +6,15 @@ using System.Runtime.Serialization;
 
 namespace BusinessLogic.Model
 {
-    [DataContract(IsReference = true)]
     public class PropertyMetadata
     {
         #region Properties
 
-        [DataMember]
         public string Name { get; set; }
-        [DataMember]
         public TypeMetadata Type { get; set; }
         #endregion
+
+        public PropertyMetadata() { }
 
         public PropertyMetadata(string name, TypeMetadata propertyType)
         {

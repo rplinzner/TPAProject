@@ -1,10 +1,6 @@
-﻿using BusinessLogic.Logger;
-using BusinessLogic.Logger.Enum;
-using BusinessLogic.Logger.Interface;
-using BusinessLogic.ViewModel;
-using System.Collections.Generic;
-using System.Windows;
-using WpfApplication.WpfHelper;
+﻿using System.Windows;
+using Composition;
+using ViewModel.Windows;
 
 namespace WpfApplication
 {
@@ -16,14 +12,10 @@ namespace WpfApplication
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowVM()
-            {
-                PathFinder = new WpfPathFinder(),
-                LogFactory = new BaseLogFactory(new List<ILogger>
-                {
-                    new FileLogger("WPFlog.txt")
-                }, LogOutputLevelEnum.Debug)
-            };
+            MainWindowVM vm = new MainWindowVM();
+            Compose.Instance.ComposeParts(vm);
+            DataContext = vm;
+
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassesForTesting
+namespace Tests.ClassesForTesting
 {
     public class Class1 : Interface1
     {

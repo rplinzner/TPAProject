@@ -36,6 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,7 +67,6 @@
     </Compile>
     <Compile Include="Converters\TreeViewItemToBrushConverter.cs" />
     <Compile Include="Converters\TreeViewItemToStringConverter.cs" />
-    <Compile Include="WpfHelper\WpfPathFinder.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -98,9 +99,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
-      <Project>{71590a12-a991-4fb2-8a89-6b2a48d6be26}</Project>
-      <Name>BusinessLogic</Name>
+    <ProjectReference Include="..\Composition\Composition.csproj">
+      <Project>{45687b68-7dff-40b7-9e69-f300ab441b3a}</Project>
+      <Name>Composition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{9584b4b6-5eb9-4b7e-be59-5745975cfc33}</Project>
+      <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

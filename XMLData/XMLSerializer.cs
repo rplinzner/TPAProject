@@ -13,6 +13,7 @@ namespace XMLData
     {
         public void Serialize(string path, BaseAssemblyMetadata obj)
         {
+            if (File.Exists(path)) File.Delete(path);
             XMLAssemblyMetadata xmlMetadata = (XMLAssemblyMetadata)obj;
             string name = JsonConvert.SerializeObject(xmlMetadata, Formatting.Indented,
                 new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });

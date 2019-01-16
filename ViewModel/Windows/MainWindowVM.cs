@@ -3,23 +3,16 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
 using BusinessLogic;
-using ViewModel.TreeViewItems;
-using ViewModel.BaseItems;
 using BusinessLogic.ReflectionItems;
-using BusinessLogic.Model;
-using Composition;
 using Interfaces;
 using Logging;
-using Data;
+using ViewModel.BaseItems;
+using ViewModel.TreeViewItems;
 
 namespace ViewModel.Windows
 {
     public class MainWindowVM : BaseVM
     {
-
-        
-        
-        
         #region MEF
         [Import(typeof(IPathFinder))]
         public IPathFinder PathFinder { get; set; }
@@ -33,6 +26,8 @@ namespace ViewModel.Windows
         public string PathForSerialization { get; set; }
 
         private string _pathVariable;
+        private bool _isButtonJsonActive = true;
+        private bool _isButtonDbActive = true;
 
         #region Commands
 
@@ -40,13 +35,24 @@ namespace ViewModel.Windows
         public ICommand ClickSave { get; }
         public ICommand ClickOpenDB { get; }
         public ICommand ClickSaveDB { get; }
-        
+
 
         #endregion
-        
+
         private Reflector _reflector;
         public ObservableCollection<TreeViewItem> HierarchicalAreas { get; set; }
         private TreeViewAssembly _treeViewAssembly;
+
+        public bool IsButtonJsonActive
+        {
+            get => _isButtonJsonActive;
+            set
+            {
+                _isButtonJsonActive = value;
+                OnPropertyChanged(nameof(IsButtonJsonActive));
+            }
+        }
+
         public string PathVariable
         {
             get => _pathVariable;
@@ -56,7 +62,17 @@ namespace ViewModel.Windows
                 OnPropertyChanged(nameof(PathVariable));
             }
         }
-        
+
+        public bool IsButtonDbActive
+        {
+            get => _isButtonDbActive;
+            set
+            {
+                _isButtonDbActive = value;
+                OnPropertyChanged(nameof(IsButtonDbActive));
+            }
+        }
+
 
         #region ctor
         public MainWindowVM()
@@ -66,15 +82,23 @@ namespace ViewModel.Windows
             ClickSave = new RelayCommand(Save);
             ClickOpenDB = new RelayCommand(OpenDB);
             ClickSaveDB = new RelayCommand(SaveDB);
+            if (Service.Serializer.ToString().Contains("DB"))
+            {
+                IsButtonJsonActive = false;
+            }
+            else
+            {
+                IsButtonDbActive = false;
+            }
         }
 
-        
+
 
 
         #endregion
         private void OpenDB()
         {
-            
+
             ShowInfo.Show("Deserialization from DB started. Press OK and wait for end result");
             Logger.Log(new MessageStructure("Deserialization from DB started..."));
             try
@@ -145,7 +169,7 @@ namespace ViewModel.Windows
 
         private void SaveDB()
         {
-            
+
             ShowInfo.Show("Serialization to DB has started. Press OK and wait for end result");
             Logger.Log(new MessageStructure("Serialization to DB has started"));
             try

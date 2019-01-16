@@ -14,7 +14,7 @@ namespace BusinessLogic.Model
 
         public string Name { get; set; }
         public List<TypeMetadata> GenericArguments { get; set; }
-        public Tuple<AccessLevel, AbstractEnum, StaticEnum, VirtualEnum> Modifiers { get; set; }
+        public MethodModifiers Modifiers { get; set; }
         public TypeMetadata ReturnType { get; set; }
         public bool Extension { get; set; }
         public List<ParameterMetadata> Parameters { get; set; }
@@ -42,7 +42,7 @@ namespace BusinessLogic.Model
             return method.IsDefined(typeof(ExtensionAttribute), true);
         }
 
-        private Tuple<AccessLevel, AbstractEnum, StaticEnum, VirtualEnum> EmitModifiers(MethodBase method)
+        private MethodModifiers EmitModifiers(MethodBase method)
         {
             AccessLevel access = method.IsPublic ? AccessLevel.Public :
                 method.IsFamily ? AccessLevel.Protected :
@@ -54,7 +54,12 @@ namespace BusinessLogic.Model
 
             VirtualEnum _virtual = method.IsVirtual ? VirtualEnum.Virtual : VirtualEnum.NotVirtual;
 
-            return new Tuple<AccessLevel, AbstractEnum, StaticEnum, VirtualEnum>(access, _abstract, _static, _virtual);
+            return new MethodModifiers() {
+                AbstractEnum = _abstract,
+                StaticEnum = _static,
+                VirtualEnum = _virtual,
+                AccessLevel = access
+            };
         }
         public static List<MethodMetadata> EmitMethods(Type type)
         {
@@ -83,10 +88,10 @@ namespace BusinessLogic.Model
         public string GetFullName()
         {
             string fullname = "";
-            fullname += Modifiers.Item1.ToString().ToLower() + " ";
-            fullname += Modifiers.Item2 == AbstractEnum.Abstract ? AbstractEnum.Abstract.ToString().ToLower() + " " : "";
-            fullname += Modifiers.Item3 == StaticEnum.Static ? StaticEnum.Static.ToString().ToLower() + " " : "";
-            fullname += Modifiers.Item4 == VirtualEnum.Virtual ? VirtualEnum.Virtual.ToString().ToLower() + " " : "";
+            fullname += Modifiers.AccessLevel.ToString().ToLower() + " ";
+            fullname += Modifiers.AbstractEnum == AbstractEnum.Abstract ? AbstractEnum.Abstract.ToString().ToLower() + " " : "";
+            fullname += Modifiers.StaticEnum == StaticEnum.Static ? StaticEnum.Static.ToString().ToLower() + " " : "";
+            fullname += Modifiers.VirtualEnum == VirtualEnum.Virtual ? VirtualEnum.Virtual.ToString().ToLower() + " " : "";
             fullname += Name;
             return fullname;
         }

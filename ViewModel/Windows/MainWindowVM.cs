@@ -74,6 +74,8 @@ namespace ViewModel.Windows
         #endregion
         private void OpenDB()
         {
+            
+            ShowInfo.Show("Deserialization from DB started. Press OK and wait for end result");
             Logger.Log(new MessageStructure("Deserialization from DB started..."));
             try
             {
@@ -142,6 +144,8 @@ namespace ViewModel.Windows
 
         private void SaveDB()
         {
+            
+            ShowInfo.Show("Serialization to DB has started. Press OK and wait for end result");
             Logger.Log(new MessageStructure("Serialization to DB has started"));
             try
             {

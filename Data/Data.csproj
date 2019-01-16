@@ -54,6 +54,8 @@
     <Compile Include="DataModel\BaseParameterMetadata.cs" />
     <Compile Include="DataModel\BasePropertyMetadata.cs" />
     <Compile Include="DataModel\BaseTypeMetadata.cs" />
+    <Compile Include="DataModel\MethodModifiers.cs" />
+    <Compile Include="DataModel\TypeModifiers.cs" />
     <Compile Include="ISerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

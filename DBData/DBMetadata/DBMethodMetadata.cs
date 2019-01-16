@@ -30,7 +30,7 @@ namespace DBData.DBMetadata
         public override string Name { get; set; }
 
         public override bool Extension { get; set; }
-        public override Tuple<AccessLevel, AbstractEnum, StaticEnum, VirtualEnum> Modifiers { get; set; }
+        public override MethodModifiers Modifiers { get; set; }
 
         public new DBTypeMetadata ReturnType { get; set; }
         public new List<DBTypeMetadata> GenericArguments { get; set; }

@@ -39,7 +39,7 @@ namespace DBData.DBMetadata
         public override TypeEnum Type { get; set; }
         public new DBTypeMetadata DeclaringType { get; set; }
 
-        public override Tuple<AccessLevel, SealedEnum, AbstractEnum, StaticEnum> Modifiers { get; set; }
+        public override TypeModifiers Modifiers { get; set; }
 
         public int? NamespaceId { get; set; }
 

@@ -16,7 +16,7 @@ namespace Tests.XMLTests
     [TestClass]
     public class SerializerTest
     {
-        private string path = @"..\..\..\ClassesForTesting\bin\Debug\ClassesForTesting.dll";
+        private string path = @"..\..\..\TPA.ApplicationArchitecture.dll";
         private string XMLFilePath = "test.xml";
         private BaseAssemblyMetadata assemblyModel = new XMLAssemblyMetadata();
 
@@ -27,7 +27,7 @@ namespace Tests.XMLTests
             XMLSerializer xmlSerializer = new XMLSerializer();
             xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
-            Assert.AreEqual(3, model.Namespaces.Count);
+            Assert.AreEqual(2, model.Namespaces.Count);
         }
 
         [TestMethod]
@@ -38,17 +38,13 @@ namespace Tests.XMLTests
             xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
-            List<TypeMetadata> classesForTestingTypes = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting").Types;
-            Assert.AreEqual(5, classesForTestingTypes.Count);
-
             List<TypeMetadata> niceNamespaceTypes = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting.NiceNamespace").Types;
-            Assert.AreEqual(5, niceNamespaceTypes.Count);
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types;
+            Assert.AreEqual(9, niceNamespaceTypes.Count);
 
             List<TypeMetadata> recursionTypes = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting.Recursion").Types;
-            Assert.AreEqual(3, recursionTypes.Count);
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data.CircularReference").Types;
+            Assert.AreEqual(2, recursionTypes.Count);
         }
 
         [TestMethod]
@@ -60,7 +56,7 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> interfaces = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting").Types
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
                 .Where(t => t.Type == TypeEnum.Interface).ToList();
             Assert.AreEqual(1, interfaces.Count);
         }
@@ -74,7 +70,7 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classesWithImplementedInterfaces = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting").Types
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
                 .Where(t => t.ImplementedInterfaces.Count > 0).ToList();
             Assert.AreEqual(1, classesWithImplementedInterfaces.Count);
         }
@@ -88,9 +84,9 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> publicClasses = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting.NiceNamespace").Types
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
                 .Where(t => t.Modifiers.AccessLevel == AccessLevel.Public).ToList();
-            Assert.AreEqual(5, publicClasses.Count);
+            Assert.AreEqual(9, publicClasses.Count);
         }
 
         [TestMethod]
@@ -102,7 +98,7 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> abstractClasses = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting").Types
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
                 .Where(t => t.Modifiers.AbstractEnum == AbstractEnum.Abstract).ToList();
             Assert.AreEqual(2, abstractClasses.Count);
         }
@@ -116,7 +112,7 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classesWithBaseType = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting").Types
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
                 .Where(t => t.BaseType != null).ToList();
             Assert.AreEqual(1, classesWithBaseType.Count);
         }
@@ -130,7 +126,7 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> staticClasses = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting").Types
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
                 .Where(t => t.Modifiers.StaticEnum == StaticEnum.Static).ToList();
             Assert.AreEqual(1, staticClasses.Count);
         }
@@ -144,7 +140,7 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> genericClasses = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting.NiceNamespace").Types
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
                 .Where(t => t.GenericArguments != null).ToList();
             Assert.AreEqual(1, genericClasses.Count);
         }
@@ -158,9 +154,9 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classesWithNestedTypes = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting.NiceNamespace").Types
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
                 .Where(t => t.NestedTypes.Count > 0).ToList();
-            Assert.AreEqual(2, classesWithNestedTypes.Count);
+            Assert.AreEqual(1, classesWithNestedTypes.Count);
         }
 
         [TestMethod]
@@ -172,9 +168,9 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classes = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting").Types
-                .Where(t => t.Name == "Class1").ToList();
-            Assert.AreEqual(2, classes.First().Constructors.Count);
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
+                .Where(t => t.Name == "ClassWithAttribute").ToList();
+            Assert.AreEqual(1, classes.First().Constructors.Count);
         }
 
         [TestMethod]
@@ -186,8 +182,8 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classes = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting").Types
-                .Where(t => t.Name == "Class1").ToList();
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
+                .Where(t => t.Name == "StaticClass").ToList();
             Assert.AreEqual(4, classes.First().Methods.Count);
         }
 
@@ -200,9 +196,9 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classes = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting").Types
-                .Where(t => t.Name == "StaticClass1").ToList();
-            Assert.AreEqual(1, classes.First().Fields.Count);
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
+                .Where(t => t.Name == "StaticClass").ToList();
+            Assert.AreEqual(2, classes.First().Fields.Count);
         }
 
         [TestMethod]
@@ -214,9 +210,9 @@ namespace Tests.XMLTests
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classes = reflector.AssemblyModel.Namespaces
-                .Find(t => t.Name == "Tests.ClassesForTesting.NiceNamespace").Types
-                .Where(t => t.Name == "ClassWithClass").ToList();
-            Assert.AreEqual(2, classes.First().Properties.Count);
+                .Find(t => t.Name == "TPA.ApplicationArchitecture.Data").Types
+                .Where(t => t.Name == "StaticClass").ToList();
+            Assert.AreEqual(1, classes.First().Properties.Count);
         }
     }
 }

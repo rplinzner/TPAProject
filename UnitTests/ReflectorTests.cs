@@ -74,7 +74,7 @@ namespace Tests.ReflectorTests
             Reflector reflector = new Reflector(path);
             List<TypeMetadata> publicClasses = reflector.AssemblyModel.Namespaces
                 .Find(t => t.Name == "Tests.ClassesForTesting.NiceNamespace").Types
-                .Where(t => t.Modifiers.Item1 == AccessLevel.Public).ToList();
+                .Where(t => t.Modifiers.AccessLevel == AccessLevel.Public).ToList();
             Assert.AreEqual(5, publicClasses.Count);
         }
 
@@ -84,7 +84,7 @@ namespace Tests.ReflectorTests
             Reflector reflector = new Reflector(path);
             List<TypeMetadata> abstractClasses = reflector.AssemblyModel.Namespaces
                 .Find(t => t.Name == "Tests.ClassesForTesting").Types
-                .Where(t => t.Modifiers.Item3 == AbstractEnum.Abstract).ToList();
+                .Where(t => t.Modifiers.AbstractEnum == AbstractEnum.Abstract).ToList();
             Assert.AreEqual(2, abstractClasses.Count);
         }
 
@@ -104,7 +104,7 @@ namespace Tests.ReflectorTests
             Reflector reflector = new Reflector(path);
             List<TypeMetadata> staticClasses = reflector.AssemblyModel.Namespaces
                 .Find(t => t.Name == "Tests.ClassesForTesting").Types
-                .Where(t => t.Modifiers.Item4 == StaticEnum.Static).ToList();
+                .Where(t => t.Modifiers.StaticEnum == StaticEnum.Static).ToList();
             Assert.AreEqual(1, staticClasses.Count);
         }
 

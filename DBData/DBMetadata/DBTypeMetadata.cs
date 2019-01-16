@@ -4,8 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Data.DataModel;
 
-namespace DBData.DBModel
+namespace DBData.DBMetadata
 {
+    [Table("TypeMetadata")]
     public class DBTypeMetadata : BaseTypeMetadata
     {
         #region Constructor
@@ -38,7 +39,7 @@ namespace DBData.DBModel
         public override TypeEnum Type { get; set; }
         public new DBTypeMetadata DeclaringType { get; set; }
 
-        public override Tuple<AccessLevel, SealedEnum, AbstractEnum, StaticEnum> Modifiers { get; set; }
+        public override TypeModifiers Modifiers { get; set; }
 
         public int? NamespaceId { get; set; }
 

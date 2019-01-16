@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Data.DataModel;
 
-namespace DBData.DBModel
+namespace DBData.DBMetadata
 {
+    [Table("MethodMetadata")]
     public class DBMethodMetadata : BaseMethodMetadata
     {
         #region Constructor
@@ -28,7 +30,7 @@ namespace DBData.DBModel
         public override string Name { get; set; }
 
         public override bool Extension { get; set; }
-        public override Tuple<AccessLevel, AbstractEnum, StaticEnum, VirtualEnum> Modifiers { get; set; }
+        public override MethodModifiers Modifiers { get; set; }
 
         public new DBTypeMetadata ReturnType { get; set; }
         public new List<DBTypeMetadata> GenericArguments { get; set; }

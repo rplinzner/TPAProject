@@ -15,7 +15,7 @@ namespace XMLData.XMLModel
         public override string NamespaceName { get; set; }
         public new XMLTypeMetadata BaseType { get; set; }
         public new List<XMLTypeMetadata> GenericArguments { get; set; }
-        public override Tuple<AccessLevel, SealedEnum, AbstractEnum, StaticEnum> Modifiers { get; set; }
+        public override TypeModifiers Modifiers { get; set; }
         public override TypeEnum Type { get; set; }
         public new List<XMLTypeMetadata> ImplementedInterfaces { get; set; }
         public new List<XMLTypeMetadata> NestedTypes { get; set; }

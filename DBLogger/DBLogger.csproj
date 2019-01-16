@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0ABA202D-9EB2-4766-9B8C-E3DD42B796B1}</ProjectGuid>
+    <ProjectGuid>{4DB22262-42DB-4D8A-A5F3-C8749D3D1A97}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Data</RootNamespace>
-    <AssemblyName>Data</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>DBLogger</RootNamespace>
+    <AssemblyName>DBLogger</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -31,9 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,22 +49,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataModel\BaseAssemblyMetadata.cs" />
-    <Compile Include="DataModel\Enum\AbstractEnum.cs" />
-    <Compile Include="DataModel\Enum\AccessLevel.cs" />
-    <Compile Include="DataModel\Enum\SealedEnum.cs" />
-    <Compile Include="DataModel\Enum\StaticEnum.cs" />
-    <Compile Include="DataModel\Enum\TypeEnum.cs" />
-    <Compile Include="DataModel\Enum\VirtualEnum.cs" />
-    <Compile Include="DataModel\BaseMethodMetadata.cs" />
-    <Compile Include="DataModel\BaseNamespaceMetadata.cs" />
-    <Compile Include="DataModel\BaseParameterMetadata.cs" />
-    <Compile Include="DataModel\BasePropertyMetadata.cs" />
-    <Compile Include="DataModel\BaseTypeMetadata.cs" />
-    <Compile Include="DataModel\MethodModifiers.cs" />
-    <Compile Include="DataModel\TypeModifiers.cs" />
-    <Compile Include="ISerializer.cs" />
+    <Compile Include="DatabaseLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBData\DBData.csproj">
+      <Project>{0d1097b7-73eb-4acb-a9cb-8daa828860a7}</Project>
+      <Name>DBData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logging\Logging.csproj">
+      <Project>{92fbbacb-e018-48b7-addb-b2c70b42faa0}</Project>
+      <Name>Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

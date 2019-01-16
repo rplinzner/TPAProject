@@ -17,8 +17,7 @@ namespace ViewModel.Windows
     public class MainWindowVM : BaseVM
     {
 
-        //TODO: zrobić osobny serwis
-        //public ISerializer Serializer = new XMLSerializer();
+        
         
         
         #region MEF
@@ -28,7 +27,6 @@ namespace ViewModel.Windows
         public ILogger Logger { get; set; }
         [Import(typeof(IShowInfo))]
         public IShowInfo ShowInfo { get; set; }
-        //[Import(typeof(ReflectionService))]
         public ReflectionService Service { get; set; } = new ReflectionService();
         #endregion
 
@@ -40,6 +38,8 @@ namespace ViewModel.Windows
 
         public ICommand ClickOpen { get; }
         public ICommand ClickSave { get; }
+        public ICommand ClickOpenDB { get; }
+        public ICommand ClickSaveDB { get; }
         
 
         #endregion
@@ -64,8 +64,35 @@ namespace ViewModel.Windows
             HierarchicalAreas = new ObservableCollection<TreeViewItem>();
             ClickOpen = new RelayCommand(Open);
             ClickSave = new RelayCommand(Save);
+            ClickOpenDB = new RelayCommand(OpenDB);
+            ClickSaveDB = new RelayCommand(SaveDB);
         }
+
+        
+
+
         #endregion
+        private void OpenDB()
+        {
+            
+            ShowInfo.Show("Deserialization from DB started. Press OK and wait for end result");
+            Logger.Log(new MessageStructure("Deserialization from DB started..."));
+            try
+            {
+                _reflector = new Reflector(Service.Load(""));
+                Logger.Log(new MessageStructure("Reflection from DB has started"));
+            }
+            catch (Exception e)
+            {
+                Logger.Log(new MessageStructure("Reflection from DB Error: " + e.Message), LogLevelEnum.Error);
+                ShowInfo.Show("FAIL");
+            }
+            _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
+            Logger.Log(new MessageStructure("Showing tree view"));
+            ShowTreeView();
+        }
+
+
         private void Open()
         {
             Logger.Log(new MessageStructure("Loading Path"));
@@ -115,9 +142,29 @@ namespace ViewModel.Windows
             }
         }
 
+        private void SaveDB()
+        {
+            
+            ShowInfo.Show("Serialization to DB has started. Press OK and wait for end result");
+            Logger.Log(new MessageStructure("Serialization to DB has started"));
+            try
+            {
+                Service.Save("", _reflector.AssemblyModel);
+                Logger.Log(new MessageStructure("Serializization to DB completed"), LogLevelEnum.Success);
+                ShowInfo.Show("Serialization to DB completed");
+            }
+            catch (Exception e)
+            {
+                Logger.Log(new MessageStructure("Serialization to DB error: " + e.Message), LogLevelEnum.Error);
+                ShowInfo.Show("Serialization error, check log for more info");
+            }
+        }
+
         private void Save()
         {
             Logger.Log(new MessageStructure("Serialization has started"));
+
+
             PathForSerialization = PathFinder.SaveToPath();
             if (PathForSerialization == null)
             {

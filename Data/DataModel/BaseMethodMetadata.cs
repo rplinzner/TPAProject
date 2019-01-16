@@ -16,7 +16,7 @@ namespace Data.DataModel
 
         public virtual List<BaseTypeMetadata> GenericArguments { get; set; }
         [DataMember]
-        public virtual Tuple<AccessLevel, AbstractEnum, StaticEnum, VirtualEnum> Modifiers { get; set; }
+        public virtual MethodModifiers Modifiers { get; set; }
 
         public virtual BaseTypeMetadata ReturnType { get; set; }
         [DataMember]

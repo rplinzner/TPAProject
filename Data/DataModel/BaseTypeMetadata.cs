@@ -19,8 +19,8 @@ namespace Data.DataModel
         public virtual BaseTypeMetadata BaseType { get; set; }
 
         public virtual List<BaseTypeMetadata> GenericArguments { get; set; }
-        
-        public virtual Tuple<AccessLevel, SealedEnum, AbstractEnum, StaticEnum> Modifiers { get; set; }
+
+        public virtual TypeModifiers Modifiers { get; set; }
         public virtual TypeEnum Type { get; set; }
 
         public virtual List<BaseTypeMetadata> ImplementedInterfaces { get; set; }

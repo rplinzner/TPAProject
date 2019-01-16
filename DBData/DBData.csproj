@@ -41,6 +41,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,12 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBModel\DBAssemblyMetadata.cs" />
-    <Compile Include="DBModel\DBMethodMetadata.cs" />
-    <Compile Include="DBModel\DBNamespaceMetadata.cs" />
-    <Compile Include="DBModel\DBParameterMetadata.cs" />
-    <Compile Include="DBModel\DBPropertyMetadata.cs" />
-    <Compile Include="DBModel\DBTypeMetadata.cs" />
+    <Compile Include="DatabaseContext.cs" />
+    <Compile Include="DatabaseHandler.cs" />
+    <Compile Include="DBMetadata\DBAssemblyMetadata.cs" />
+    <Compile Include="DBMetadata\DBMethodMetadata.cs" />
+    <Compile Include="DBMetadata\DBNamespaceMetadata.cs" />
+    <Compile Include="DBMetadata\DBParameterMetadata.cs" />
+    <Compile Include="DBMetadata\DBPropertyMetadata.cs" />
+    <Compile Include="DBMetadata\DBTypeMetadata.cs" />
+    <Compile Include="LogModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,9 +66,15 @@
       <Project>{0aba202d-9eb2-4766-9b8c-e3dd42b796b1}</Project>
       <Name>Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logging\Logging.csproj">
+      <Project>{92fbbacb-e018-48b7-addb-b2c70b42faa0}</Project>
+      <Name>Logging</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

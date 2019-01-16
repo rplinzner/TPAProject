@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Data.DataModel;
 
-namespace DBData.DBModel
+namespace DBData.DBMetadata
 {
-    [Export(typeof(DBAssemblyMetadata))]
+    [Table("AssemblyMetadata")]
+    [Export(typeof(BaseAssemblyMetadata))]
     public class DBAssemblyMetadata : BaseAssemblyMetadata
     {
         #region Properties

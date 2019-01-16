@@ -105,15 +105,17 @@ namespace ViewModel.Windows
             {
                 _reflector = new Reflector(Service.Load(""));
                 Logger.Log(new MessageStructure("Reflection from DB has started"));
+                _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
+                ShowTreeView();
+                Logger.Log(new MessageStructure("Showing tree view"));
             }
             catch (Exception e)
             {
                 Logger.Log(new MessageStructure("Reflection from DB Error: " + e.Message), LogLevelEnum.Error);
                 ShowInfo.Show("Deserialization error, check log for more info");
             }
-            _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
-            Logger.Log(new MessageStructure("Showing tree view"));
-            ShowTreeView();
+            
+            
         }
 
 
@@ -135,35 +137,42 @@ namespace ViewModel.Windows
                     _reflector = new Reflector(PathVariable);
                     Logger.Log(new MessageStructure("Reflection has started"));
                     ShowInfo.Show("SUCCESS");
+                    _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
+                    Logger.Log(new MessageStructure("Showing tree view"));
+                    ShowTreeView();
                 }
                 catch (Exception e)
                 {
                     Logger.Log(new MessageStructure("Reflection Error: " + e.Message), LogLevelEnum.Error);
                     ShowInfo.Show("Deserialization error, check log for more info");
                 }
-                _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
-                Logger.Log(new MessageStructure("Showing tree view"));
-                ShowTreeView();
+                
             }
 
             else if (PathVariable.EndsWith(".xml"))
             {
+
+                if (IsButtonJsonActive == false)
+                {
+                    Logger.Log(new MessageStructure("Serializer Error: You can't open this type of file using injected serializer"), LogLevelEnum.Error);
+                    ShowInfo.Show("Serializer Error, check log for more info");
+                    return;
+                }
                 try
                 {
                     Logger.Log(new MessageStructure("Deserialization has started"));
                     _reflector = new Reflector(Service.Load(PathVariable));
+                    Logger.Log(new MessageStructure("Deserialization success"), LogLevelEnum.Success);
+
+                    _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
+                    Logger.Log(new MessageStructure("Showing tree view"));
+                    ShowTreeView();
                 }
                 catch (Exception e)
                 {
                     Logger.Log(new MessageStructure("Deserialization error:" + e.Message), LogLevelEnum.Error);
                     ShowInfo.Show("Deserialization error, check log for more info");
                 }
-
-                Logger.Log(new MessageStructure("Deserialization success"), LogLevelEnum.Success);
-
-                _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
-                Logger.Log(new MessageStructure("Showing tree view"));
-                ShowTreeView();
             }
         }
 

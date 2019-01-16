@@ -13,9 +13,13 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button Command="{Binding ClickOpen}" Content="Open" Margin="10 0 10 0" BorderThickness="2" Grid.Column="0" />
                 <Button Command="{Binding ClickSave}" Content="Save" Margin="10 0 10 0" BorderThickness="2" Grid.Column="1" />
+                <Button Command="{Binding ClickSaveDB}" Content="Save to DB" Margin="10 0 10 0" BorderThickness="2" Grid.Column="3" />
+                <Button Command="{Binding ClickOpenDB}" Content="Open from DB" Margin="10 0 10 0" BorderThickness="2" Grid.Column="2" />
             </Grid>
             <!-- info -->
             <Grid>

@@ -7,7 +7,7 @@ using Data.DataModel;
 namespace DBData.DBMetadata
 {
     [Table("AssemblyMetadata")]
-    [Export(typeof(DBAssemblyMetadata))]
+    [Export(typeof(BaseAssemblyMetadata))]
     public class DBAssemblyMetadata : BaseAssemblyMetadata
     {
         #region Properties

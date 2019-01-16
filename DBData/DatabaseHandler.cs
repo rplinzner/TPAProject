@@ -2,6 +2,9 @@
 using Data;
 using Data.DataModel;
 using DBData.DBMetadata;
+using System.Data.Entity;
+using System;
+using System.Linq;
 
 namespace DBData
 {
@@ -66,7 +69,7 @@ namespace DBData
 
 
                 DBAssemblyMetadata dbAssemblyMetadata = context.AssemblyMetadata
-                    .Include(a => a.NamespaceMetadatas)
+                    .Include(a => a.Namespaces)
                     .ToList().FirstOrDefault();
                 if (dbAssemblyMetadata == null)
                     throw new ArgumentException("Database is empty");

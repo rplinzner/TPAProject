@@ -5,9 +5,9 @@ namespace DBData
 {
     public class DatabaseContext : DbContext
     {
-        //private const string _connectionString =
-          //  @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TPAProject;Integrated Security=True;MultipleActiveResultSets=True;App=EntityFramework";
-        public DatabaseContext() : base("TPAProject")
+        private const string _connectionString =
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TPAProject;Integrated Security=True;MultipleActiveResultSets=True;App=EntityFramework";
+        public DatabaseContext() : base(_connectionString)
         {
 
         }

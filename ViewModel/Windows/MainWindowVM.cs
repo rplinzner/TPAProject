@@ -85,7 +85,7 @@ namespace ViewModel.Windows
             catch (Exception e)
             {
                 Logger.Log(new MessageStructure("Reflection from DB Error: " + e.Message), LogLevelEnum.Error);
-                ShowInfo.Show("FAIL");
+                ShowInfo.Show("Deserialization error, check log for more info");
             }
             _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
             Logger.Log(new MessageStructure("Showing tree view"));
@@ -115,7 +115,7 @@ namespace ViewModel.Windows
                 catch (Exception e)
                 {
                     Logger.Log(new MessageStructure("Reflection Error: " + e.Message), LogLevelEnum.Error);
-                    ShowInfo.Show("FAIL");
+                    ShowInfo.Show("Deserialization error, check log for more info");
                 }
                 _treeViewAssembly = new TreeViewAssembly(_reflector.AssemblyModel);
                 Logger.Log(new MessageStructure("Showing tree view"));
@@ -132,6 +132,7 @@ namespace ViewModel.Windows
                 catch (Exception e)
                 {
                     Logger.Log(new MessageStructure("Deserialization error:" + e.Message), LogLevelEnum.Error);
+                    ShowInfo.Show("Deserialization error, check log for more info");
                 }
 
                 Logger.Log(new MessageStructure("Deserialization success"), LogLevelEnum.Success);

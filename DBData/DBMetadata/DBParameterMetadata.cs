@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Data.DataModel;
 
-namespace DBData.DBModel
+namespace DBData.DBMetadata
 {
+    [Table("ParameterMetadata")]
     public class DBParameterMetadata : BaseParameterMetadata
     {
         #region Constructor

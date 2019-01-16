@@ -4,8 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Data.DataModel;
 
-namespace DBData.DBModel
+namespace DBData.DBMetadata
 {
+    [Table("TypeMetadata")]
     public class DBTypeMetadata : BaseTypeMetadata
     {
         #region Constructor

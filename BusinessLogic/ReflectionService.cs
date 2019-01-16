@@ -13,7 +13,8 @@ namespace BusinessLogic
 
         public void Save(string path, AssemblyMetadata metadata)
         {
-            Serializer.Serialize(path, AssemblyModelMapper.MapDown(metadata, Assembly.GetType()));
+            Serializer.Serialize(path, AssemblyModelMapper.MapDown(metadata, Assembly));
+            //Serializer.Serialize(path, AssemblyModelMapper.MapDown(metadata, Assembly.GetType()));
         }
 
         public AssemblyMetadata Load(string path)

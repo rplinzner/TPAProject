@@ -25,7 +25,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
             Assert.AreEqual(2, model.Namespaces.Count);
         }
@@ -35,7 +35,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> niceNamespaceTypes = reflector.AssemblyModel.Namespaces
@@ -52,7 +52,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> interfaces = reflector.AssemblyModel.Namespaces
@@ -66,7 +66,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classesWithImplementedInterfaces = reflector.AssemblyModel.Namespaces
@@ -80,7 +80,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> publicClasses = reflector.AssemblyModel.Namespaces
@@ -94,7 +94,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> abstractClasses = reflector.AssemblyModel.Namespaces
@@ -108,7 +108,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classesWithBaseType = reflector.AssemblyModel.Namespaces
@@ -122,7 +122,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> staticClasses = reflector.AssemblyModel.Namespaces
@@ -136,7 +136,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> genericClasses = reflector.AssemblyModel.Namespaces
@@ -150,7 +150,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classesWithNestedTypes = reflector.AssemblyModel.Namespaces
@@ -164,7 +164,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classes = reflector.AssemblyModel.Namespaces
@@ -178,7 +178,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classes = reflector.AssemblyModel.Namespaces
@@ -192,7 +192,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classes = reflector.AssemblyModel.Namespaces
@@ -206,7 +206,7 @@ namespace Tests.XMLTests
         {
             Reflector reflector = new Reflector(path);
             XMLSerializer xmlSerializer = new XMLSerializer();
-            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel.GetType()));
+            xmlSerializer.Serialize(XMLFilePath, AssemblyModelMapper.MapDown(reflector.AssemblyModel, assemblyModel));
             AssemblyMetadata model = AssemblyModelMapper.MapUp(xmlSerializer.Deserialize(XMLFilePath));
 
             List<TypeMetadata> classes = reflector.AssemblyModel.Namespaces

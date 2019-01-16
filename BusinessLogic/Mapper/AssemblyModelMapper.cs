@@ -24,11 +24,11 @@ namespace BusinessLogic.Mapper
             return assemblyModel;
         }
 
-        public static BaseAssemblyMetadata MapDown(AssemblyMetadata model, Type assemblyModelType)
+        public static BaseAssemblyMetadata MapDown(AssemblyMetadata model, BaseAssemblyMetadata assemblyModel)
         {
-            object assemblyModel = Activator.CreateInstance(assemblyModelType);
-            PropertyInfo nameProperty = assemblyModelType.GetProperty("Name");
-            PropertyInfo namespaceModelsProperty = assemblyModelType.GetProperty("Namespaces",
+            //object assemblyModel = Activator.CreateInstance(assemblyModelType);
+            PropertyInfo nameProperty = assemblyModel.GetType().GetProperty("Name");
+            PropertyInfo namespaceModelsProperty = assemblyModel.GetType().GetProperty("Namespaces",
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
             nameProperty?.SetValue(assemblyModel,model.Name);
             namespaceModelsProperty?.SetValue(

@@ -50,6 +50,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoggerTest.cs" />
     <Compile Include="SerializerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,6 +65,14 @@
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{0aba202d-9eb2-4766-9b8c-e3dd42b796b1}</Project>
       <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileLogging\FileLogging.csproj">
+      <Project>{2c53e0a1-58ed-4d60-994d-b4a16d035fbd}</Project>
+      <Name>FileLogging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logging\Logging.csproj">
+      <Project>{92fbbacb-e018-48b7-addb-b2c70b42faa0}</Project>
+      <Name>Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\XMLData\XMLData.csproj">
       <Project>{4c1f28c7-5649-4fb7-b679-39af534ac322}</Project>

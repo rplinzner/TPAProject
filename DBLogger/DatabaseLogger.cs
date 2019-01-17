@@ -19,6 +19,7 @@ namespace DBData
                     LogCategory = level.ToString(),
                     Time = DateTime.Now
                 });
+                context.SaveChanges();
             }
         }
     }
